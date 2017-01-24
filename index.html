@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="CSSFonts/fonts.css">
+    <script type="text/javascript" src="phaser.js"></script>
+    <script type="text/javascript" src="Boot.js"></script>
+    <script type="text/javascript" src="Preloader.js"></script>
+    <script type="text/javascript" src="MechanicsMenu.js"></script>
+    <script type="text/javascript" src="MechanicOne.js"></script>
+    <script type="text/javascript" src="MechanicTwo.js"></script>
+    <script type="text/javascript" src="MechanicThree.js"></script>
+    <script type="text/javascript" src="MechanicFour.js"></script>
+    <script type="text/javascript" src="MechanicFive.js"></script>
+    <script type="text/javascript" src="MechanicSix.js"></script>
+    <script type="text/javascript" src="MechanicSeven.js"></script>
+    <script type="text/javascript" src="MechanicEight.js"></script>
+    <script type="text/javascript" src="MechanicNine.js"></script>
+    <script type="text/javascript" src="MechanicTen.js"></script>
+    <script type="text/javascript" src="MechanicEleven.js"></script>
+    <script type="text/javascript" src="MechanicTwelve.js"></script>
+    <script type="text/javascript" src="MechanicThirteen.js"></script>
+    <style type="text/css">
+
+    </style>
+</head>
+<body>
+<p style="font-family:KOMIKAX; font-size:0;" >.</p>
+
+</body>
+
+<script>
+    (function() {
+        // initialize the framework
+        //                         1024, 768
+        //  Phaser                 1024 x 672
+        // Original                850 x 600
+        var game = new Phaser.Game(1024, 672, Phaser.AUTO, 'game');
+        // add game states
+        game.state.add('Boot', Invaders.Boot);
+        game.state.add('Preloader', Invaders.Preloader);
+        game.state.add('MechanicsMenu', Invaders.MechanicsMenu);
+        game.state.add('MechanicOne',Invaders.MechanicOne);
+        game.state.add('MechanicTwo',Invaders.MechanicTwo);
+        game.state.add('MechanicThree',Invaders.MechanicThree);
+        game.state.add('MechanicFour',Invaders.MechanicFour);
+        game.state.add('MechanicFive',Invaders.MechanicFive);
+        game.state.add('MechanicSix',Invaders.MechanicSix);
+        game.state.add('MechanicSeven',Invaders.MechanicSeven);
+        game.state.add('MechanicEight',Invaders.MechanicEight);
+        game.state.add('MechanicNine',Invaders.MechanicNine);
+        game.state.add('MechanicTen',Invaders.MechanicTen);
+        game.state.add('MechanicEleven',Invaders.MechanicEleven);
+        game.state.add('MechanicTwelve',Invaders.MechanicTwelve);
+        game.state.add('MechanicThirteen',Invaders.MechanicThirteen);
+        game.state.start('Boot');
+    })();
+
+
+</script>
+
+</html>
