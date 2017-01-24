@@ -62,7 +62,6 @@ Invaders.MechanicTwo = function () {
 
     //buttonMenuS
     this.buttonMenuS = null;
-    //Hola wey
 };
 Invaders.MechanicTwo.prototype = {
 
@@ -149,7 +148,7 @@ Invaders.MechanicTwo.prototype = {
 
         this.bmdGroup = this.add.group();
         this.bmdGroup.enableBody = true;
-        this.bitMapDataShield();
+        //this.bitMapDataShield();
 
         //***HALO TWO
         this.haloTwo = this.add.group();
