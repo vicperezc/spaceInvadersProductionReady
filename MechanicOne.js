@@ -466,8 +466,7 @@ Invaders.MechanicOne.prototype = {
 
             }else if(y>3){
 
-                for (x = 0; x < 10; x++)
-                {
+                for (x = 0; x < 10; x++) {
                     invader = this.invadersGroup.create(x * 60, y * 40, 'invaderRubi');
                     invader.anchor.setTo(0.5, 0.5);
                     invader.frame = 0;
