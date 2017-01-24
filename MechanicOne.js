@@ -526,7 +526,7 @@ Invaders.MechanicOne.prototype = {
 
         if (this.spaceship.alive && this.counter < 264){
             // Los invaders se van a mover y acelerar cada vez que se reinicie la function
-            //this.tweenInvaders();
+            this.tweenInvaders();
         }
 
 
