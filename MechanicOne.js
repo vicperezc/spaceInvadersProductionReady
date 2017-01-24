@@ -119,14 +119,14 @@ Invaders.MechanicOne.prototype = {
 
         this.stage.backgroundColor = '#000427';
 
-        //this.backgroundOne = this.add.tileSprite(0, 0, 1024, 672, 'backgroundOne');
-        //this.backgroundOne.autoScroll(0, 30);
+        this.backgroundOne = this.add.tileSprite(0, 0, 1024, 672, 'backgroundOne');
+        this.backgroundOne.autoScroll(0, 30);
 
-        //this.backgroundTwo = this.add.tileSprite(0, 0, 1024, 672, 'backgroundTwo');
-        //this.backgroundTwo.autoScroll(0, 60);
+        this.backgroundTwo = this.add.tileSprite(0, 0, 1024, 672, 'backgroundTwo');
+        this.backgroundTwo.autoScroll(0, 60);
 
-        //this.backgroundThree = this.add.tileSprite(0, 0, 1024, 672, 'backgroundThree');
-        //this.backgroundThree.autoScroll(0, 50);
+        this.backgroundThree = this.add.tileSprite(0, 0, 1024, 672, 'backgroundThree');
+        this.backgroundThree.autoScroll(0, 50);
 
 
         //*** Agregamos el make a nuestro UFO en create para que la función de ufo.fireatsprite funcione.
