@@ -62,7 +62,7 @@ Invaders.MechanicTwo = function () {
 
     //buttonMenuS
     this.buttonMenuS = null;
-    //Hola
+    //Hola wey
 };
 Invaders.MechanicTwo.prototype = {
 
