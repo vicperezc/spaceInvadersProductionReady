@@ -108,7 +108,7 @@ Invaders.Preloader.prototype = {
         //this.state.start('Game');
         //this.state.start('Mechanics');
         //this.state.start('MechanicsMenu');
-        this.state.start('MechanicOne');
+        this.state.start('MechanicThree');
     }
 
 
