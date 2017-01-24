@@ -36,7 +36,7 @@
         //                         1024, 768
         //  Phaser                 1024 x 672
         // Original                850 x 600
-        var game = new Phaser.Game(1024, 672, Phaser.AUTO, 'game');
+        var game = new Phaser.Game(1024, 672, Phaser.WEBGL, 'game');
         // add game states
         game.state.add('Boot', Invaders.Boot);
         game.state.add('Preloader', Invaders.Preloader);
