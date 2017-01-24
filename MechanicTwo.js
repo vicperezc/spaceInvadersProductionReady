@@ -1704,17 +1704,18 @@ Invaders.MechanicTwo.prototype = {
         //////////////////////////////////////////
         //if (cursor.left.isDown && cursor.right.isUp)
 
-        if (this.cursor.right.isDown && this.cursor.left.isUp){
+        if (this.cursor.right.isDown && this.cursor.left.isUp || (this.game.input.activePointer.isDown &&
+            this.game.input.activePointer.x > this.game.width/2 + this.game.width/4)){
 
             //spaceship.body.acceleration.x = 1200;
             this.spaceship.body.velocity.x = 270;
 
-        } else if( this.cursor.left.isDown && this.cursor.right.isUp){
+        } else if( this.cursor.left.isDown && this.cursor.right.isUp || (this.game.input.activePointer.isDown &&
+            this.game.input.activePointer.x < this.game.width/4)){
 
             //spaceship.body.acceleration.x = -1200;
             this.spaceship.body.velocity.x = -270;
         } else {
-
             //spaceship.body.acceleration.x = 0;
             this.spaceship.body.velocity.x = 0;
 
