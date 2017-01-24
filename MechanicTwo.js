@@ -161,8 +161,7 @@ Invaders.MechanicTwo.prototype = {
         this.lives = this.add.group();
         //game.add.text(game.world.width - 100, 10, 'Lives : ', { font: '34px Arial', fill: '#fff' });
 
-        for (var i = 0; i < 3; i++)
-        {
+        for (var i = 0; i < 3; i++) {
             var ship = this.lives.create(this.world.width - 100 + (30 * i), 30, 'spaceship');
             ship.anchor.setTo(0.5, 0.5);
             ship.scale.setTo(0.5,0.5);
