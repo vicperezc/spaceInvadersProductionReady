@@ -3205,7 +3205,7 @@ Invaders.MechanicOne.prototype = {
         // Tiempo de disparo correspondiente a los valores de firingTimer y firingTimerDos
         if (this.time.now > this.firingTimer && this.spaceship.alive && this.counter < 264) {
 
-            //this.enemyFires();
+            this.enemyFires();
         }
 
         if (shootButton.isDown && this.spaceship.alive && this.counter < 264 && this.invadersGroup.countLiving() !== 0

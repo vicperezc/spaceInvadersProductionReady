@@ -1682,10 +1682,13 @@ Invaders.MechanicTwo.prototype = {
             this.enemyFires();
         }
 
-        if (shootButton.isDown && this.spaceship.alive && this.counter < 264 && this.invadersGroup.countLiving() !== 1){
+        if (shootButton.isDown && this.spaceship.alive && this.counter < 264 && this.invadersGroup.countLiving() !== 0
+            || (this.game.input.activePointer.isDown &&
+            this.game.input.activePointer.x > this.game.width/2 + this.game.width/4)
+            || (this.game.input.activePointer.isDown &&
+            this.game.input.activePointer.x < this.game.width/4)){
             this.bulletRed.fire();
         }
-
         //var singleShot = shootButton.onDown.add(shootBullet, this);
 
         /*
