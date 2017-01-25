@@ -5,7 +5,6 @@ Invaders.MechanicOne = function () {
     this.invaderBullet = null;
     this.invaderBulletDos = null;
     this.invadersGroup = null;
-    //this.invader = null;
     this.acceleration = 850;
     this.counter = 0;
     this.frame = 1;
@@ -119,14 +118,14 @@ Invaders.MechanicOne.prototype = {
 
         this.stage.backgroundColor = '#000427';
 
-        //this.backgroundOne = this.add.tileSprite(0, 0, 1024, 672, 'backgroundOne');
-        //this.backgroundOne.autoScroll(0, 30);
+        this.backgroundOne = this.add.tileSprite(0, 0, 1024, 672, 'backgroundOne');
+        this.backgroundOne.autoScroll(0, 30);
 
-        //this.backgroundTwo = this.add.tileSprite(0, 0, 1024, 672, 'backgroundTwo');
-        //this.backgroundTwo.autoScroll(0, 60);
+        this.backgroundTwo = this.add.tileSprite(0, 0, 1024, 672, 'backgroundTwo');
+        this.backgroundTwo.autoScroll(0, 60);
 
-        //this.backgroundThree = this.add.tileSprite(0, 0, 1024, 672, 'backgroundThree');
-        //this.backgroundThree.autoScroll(0, 50);
+        this.backgroundThree = this.add.tileSprite(0, 0, 1024, 672, 'backgroundThree');
+        this.backgroundThree.autoScroll(0, 50);
 
 
         //*** Agregamos el make a nuestro UFO en create para que la función de ufo.fireatsprite funcione.
@@ -246,12 +245,6 @@ Invaders.MechanicOne.prototype = {
         this.campoVerde12 = this.add.group();
         this.campoVerde12.enableBody = true;
         this.pixeles12();
-
-
-        //this.bmdGroup = this.add.group();
-        //this.bmdGroup.enableBody = true;
-        //this.bitMapDataShield();
-
 
         this.campoBlancoNoPhysics1 = this.add.group();
         this.bitMapDataShieldNoPhysics1();
@@ -402,10 +395,6 @@ Invaders.MechanicOne.prototype = {
 
 
         this.triggerNote.onPlay.add(function () {this.pianoFast.play('',0,0.6,true)},this);
-        //this.pianoFast.play('',0,0.3,true)
-
-
-
 
         //*** UFO NORMAL
         this.time.events.repeat(5000, 1, this.ufoNormal, this);
@@ -1348,13 +1337,12 @@ Invaders.MechanicOne.prototype = {
 
             live = this.lives.getFirstAlive();
 
-            if (live)
-            {
+            if (live) {
                 live.kill();
             }
 
             var explosionInvadersPrivate = this.explosionInvader.getFirstExists(false);
-            explosionInvadersPrivate.reset(player.body.x + 15,player.body.y);
+            explosionInvadersPrivate.reset(bullet.body.x,bullet.body.y + 20);
             explosionInvadersPrivate.play('explodeInvaders', 30,false,true);
             this.poofS.play();
 
@@ -1367,10 +1355,7 @@ Invaders.MechanicOne.prototype = {
 
                 this.playerDies();
             }
-
         }
-
-
     },
 
     playerHitsInvaders: function (enemy, bullet) {
@@ -1449,8 +1434,6 @@ Invaders.MechanicOne.prototype = {
             this.poofS.play();
 
             //Actualizamos el Score cada vez que muere un Invader
-
-
             this.scoreNumber+=300;
 
             this.scoreText.text = this.scoreString + this.scoreNumber;
@@ -1483,11 +1466,7 @@ Invaders.MechanicOne.prototype = {
                 alpha: 0
             }, 1500, Phaser.Easing.Linear.None, false);
             tweenA.start();
-
-
         }
-
-
     },
 
     bulletToBulletCollision: function (bulletOne,bulletTwo) {
@@ -1500,35 +1479,6 @@ Invaders.MechanicOne.prototype = {
         haloAnimPrivate.reset(bulletTwo.body.x - 20, bulletTwo.body.y + 10);
         haloAnimPrivate.play('haloTwo',30,false,true);
 
-    },
-
-    //De aquí se actualiza el Score
-    scoreTween: function() {
-
-
-        // Ponemos la variable tweenedPoints hasta arriba para que no empiece
-        // el score de cero cada vez que se actualiza
-        //this.tweenedPoints = 0;
-
-        var pointsTween = this.add.tween(this);
-
-        //pointsTween.onStart.add(function (){this.spawnEmitter(this.scoreText, 'star', 10, 300);},this);
-
-        pointsTween.to({tweenedPoints: this.scoreNumber }, 800, Phaser.Easing.Linear.None, true, 0);
-
-        pointsTween.onUpdateCallback(function(){
-
-            this.scoreText.setText(' Score: ' + Math.floor(this.tweenedPoints));
-        }, this);
-        // Esta función se pone para que acualice el valor de scoreNumber
-        pointsTween.onComplete.addOnce(function(){
-            this.scoreText.setText(' Score: '+ this.scoreNumber);
-            //this.spawnEmitter(this.scoreText, 'star', 10, 300);
-
-
-        }, this);
-
-        pointsTween.start();
     },
 
     // De aquí aparecen los +10
@@ -1804,7 +1754,6 @@ Invaders.MechanicOne.prototype = {
     },
     bitMapDataShieldNoPhysics1: function () {
 
-
         var platformbmd = this.add.bitmapData(3, 3);
         platformbmd.ctx.rect(0, 0, 3, 3);
         platformbmd.ctx.fillStyle = "#fff";
@@ -1893,7 +1842,6 @@ Invaders.MechanicOne.prototype = {
 
         var masIgualCinco = 0;
         var updateY = 530; //+30
-        //var updateX = 160;
 
         for (var i = 0; i < 16; i++){
 
@@ -1985,7 +1933,6 @@ Invaders.MechanicOne.prototype = {
                 var updateX = 226;
                 var pixelA = this.campoBlancoNoPhysics3.create(updateX + masIgualCinco, updateY, platformbmd);
                 masIgualCinco+=3;
-                //updateX+=5;
             }
             masIgualCinco=0;
             updateY-=3;
@@ -2008,13 +1955,13 @@ Invaders.MechanicOne.prototype = {
     overlapCollision4: function () {
 
         var pixeles = [];
-        for (var i = 0; i < 56; i++){
+        for (var i = 0; i < 196; i++){
 
             pixeles.push(this.campoBlancoNoPhysics4.children[i]);
         }
 
         var pixelesVivos = [];
-        for (i = 0; i < 56; i++) {
+        for (i = 0; i < 196; i++) {
             // Si los elementos del array zombies están vivos
             if (pixeles[i].alive ){
                 // Si están vivos los zombies los metemos al array zombiesAlive []
@@ -2024,7 +1971,7 @@ Invaders.MechanicOne.prototype = {
 
         var arr24 = [];
         //                  Tiene que ser igual al valor de i en el loop ---- 4,7,8,14
-        while(arr24.length < 7){
+        while(arr24.length < 14){
             var randomnumber2=Math.floor(Math.random()* pixelesVivos.length); //  Math.floor(Math.random()*(max-min+1)+min);
             var found2=false;
             for(var i2=0;i2<arr24.length;i2++){
@@ -2033,7 +1980,7 @@ Invaders.MechanicOne.prototype = {
             if(!found2)arr24[arr24.length]=randomnumber2;
         }
 
-        for (i = 0; i < 7; i++) {
+        for (i = 0; i < 14; i++) {
             if (pixelesVivos.length > 0){
                 pixelesVivos[arr24[i]].kill();
 
@@ -2053,31 +2000,24 @@ Invaders.MechanicOne.prototype = {
     },
     bitMapDataShieldNoPhysics4: function () {
 
-
-        var platformbmd = this.add.bitmapData(5, 5);
-        platformbmd.ctx.rect(0, 0, 5, 5);
+        var platformbmd = this.add.bitmapData(3, 3);
+        platformbmd.ctx.rect(0, 0, 3, 3);
         platformbmd.ctx.fillStyle = "#fff";
         platformbmd.ctx.fill();
 
-
-        //////////////////////
-        //   HORIZONTAL     //
-        //////////////////////
         var masIgualCinco = 0;
         var updateY = 482;
         var updateX = 360;
-        for (var i = 0; i < 4; i++){
-            for (var j = 0; j < 14; j++) {
+        for (var i = 0; i < 7; i++){
+
+            for (var j = 0; j < 28; j++) {
+
                 var pixelA = this.campoBlancoNoPhysics4.create(updateX + masIgualCinco, updateY, platformbmd);
-
-
-                masIgualCinco+=6;
+                masIgualCinco+=3;
             }
             masIgualCinco=0;
-            updateY-=6;
+            updateY-=3;
         }
-
-
     },
     pixelVerdeCollision4: function (shield,bullet) {
 
@@ -2096,13 +2036,13 @@ Invaders.MechanicOne.prototype = {
     overlapCollision5: function () {
 
         var pixeles = [];
-        for (var i = 0; i < 27; i++){
+        for (var i = 0; i < 96; i++){
 
             pixeles.push(this.campoBlancoNoPhysics5.children[i]);
         }
 
         var pixelesVivos = [];
-        for (i = 0; i < 27; i++) {
+        for (i = 0; i < 96; i++) {
             // Si los elementos del array zombies están vivos
             if (pixeles[i].alive ){
                 // Si están vivos los zombies los metemos al array zombiesAlive []
@@ -2112,7 +2052,7 @@ Invaders.MechanicOne.prototype = {
 
         var arr24 = [];
         //                  Tiene que ser igual al valor de i en el loop ---- 4,7,8,14
-        while(arr24.length < 3){
+        while(arr24.length < 12){
             var randomnumber2=Math.floor(Math.random()* pixelesVivos.length); //  Math.floor(Math.random()*(max-min+1)+min);
             var found2=false;
             for(var i2=0;i2<arr24.length;i2++){
@@ -2121,7 +2061,7 @@ Invaders.MechanicOne.prototype = {
             if(!found2)arr24[arr24.length]=randomnumber2;
         }
 
-        for (i = 0; i < 3; i++) {
+        for (i = 0; i < 12; i++) {
             if (pixelesVivos.length > 0){
                 pixelesVivos[arr24[i]].kill();
 
@@ -2131,58 +2071,43 @@ Invaders.MechanicOne.prototype = {
     },
     pixeles5: function () {
 
-        var playerbmd = this.add.bitmapData(5, 5);
-        playerbmd.ctx.rect(0, 0, 5, 5);
+        var playerbmd = this.add.bitmapData(18, 5);
+        playerbmd.ctx.rect(0, 0, 18, 5);
         playerbmd.ctx.fillStyle = "#0f0";
         playerbmd.ctx.fill();
 
         var x = 360;
-        var sum = 0;
-
-        for (var i = 0; i < 3; i++){
-
-            var pixel = this.campoVerde5.create(x + sum, 500, playerbmd);
-            pixel.alpha = 0;
-            sum+=6;
-
-        }
-
-
+        var pixel = this.campoVerde5.create(x, 500, playerbmd);
+        pixel.alpha = 0;
     },
     bitMapDataShieldNoPhysics5: function () {
 
-
-        var platformbmd = this.add.bitmapData(5, 5);
-        platformbmd.ctx.rect(0, 0, 5, 5);
+        var platformbmd = this.add.bitmapData(3, 3);
+        platformbmd.ctx.rect(0, 0, 3, 3);
         platformbmd.ctx.fillStyle = "#fff";
         platformbmd.ctx.fill();
 
         var masIgualCinco = 0;
         var updateY = 530; //+30
-        //var updateX = 160;
 
-        for (var i = 0; i < 9; i++){
+        for (var i = 0; i < 16; i++){
 
-            for (var j = 0; j < 17; j++) {
+            for (var j = 0; j < 6; j++) {
 
-                if (j<3){
-                    var updateX = 360;
-                    var pixelA = this.campoBlancoNoPhysics5.create(updateX + masIgualCinco, updateY, platformbmd);
-                    pixelA.health = 2;
-                    // UNO para un pixel, 5 para cinco pixeles, etc.
-                    masIgualCinco+=6;
-                    //updateX+=5;
-                }
+                var updateX = 360;
+                var pixelA = this.campoBlancoNoPhysics5.create(updateX + masIgualCinco, updateY, platformbmd);
+                pixelA.health = 2;
+                // UNO para un pixel, 5 para cinco pixeles, etc.
+                masIgualCinco+=3;
             }
             masIgualCinco=0;
-            updateY-=6;
+            updateY-=3;
         }
     },
     pixelVerdeCollision5: function (shield,bullet) {
 
         this.overlapCollision5();
         bullet.kill();
-        //shield.kill();
 
         var haloAnimPrivate = this.haloTwo.getFirstExists(false);
         haloAnimPrivate.reset(bullet.body.x - 20, bullet.body.y + 40);
@@ -2192,13 +2117,13 @@ Invaders.MechanicOne.prototype = {
     overlapCollision6: function () {
 
         var pixeles = [];
-        for (var i = 0; i < 27; i++){
+        for (var i = 0; i < 96; i++){
 
             pixeles.push(this.campoBlancoNoPhysics6.children[i]);
         }
 
         var pixelesVivos = [];
-        for (i = 0; i < 27; i++) {
+        for (i = 0; i < 96; i++) {
             // Si los elementos del array zombies están vivos
             if (pixeles[i].alive ){
                 // Si están vivos los zombies los metemos al array zombiesAlive []
@@ -2208,7 +2133,7 @@ Invaders.MechanicOne.prototype = {
 
         var arr24 = [];
         //                  Tiene que ser igual al valor de i en el loop ---- 4,7,8,14
-        while(arr24.length < 3){
+        while(arr24.length < 12){
             var randomnumber2=Math.floor(Math.random()* pixelesVivos.length); //  Math.floor(Math.random()*(max-min+1)+min);
             var found2=false;
             for(var i2=0;i2<arr24.length;i2++){
@@ -2217,7 +2142,7 @@ Invaders.MechanicOne.prototype = {
             if(!found2)arr24[arr24.length]=randomnumber2;
         }
 
-        for (i = 0; i < 3; i++) {
+        for (i = 0; i < 12; i++) {
             if (pixelesVivos.length > 0){
                 pixelesVivos[arr24[i]].kill();
 
@@ -2227,28 +2152,19 @@ Invaders.MechanicOne.prototype = {
     },
     pixeles6: function () {
 
-        var playerbmd = this.add.bitmapData(5, 5);
-        playerbmd.ctx.rect(0, 0, 5, 5);
+        var playerbmd = this.add.bitmapData(18, 5);
+        playerbmd.ctx.rect(0, 0, 18, 5);
         playerbmd.ctx.fillStyle = "#0f0";
         playerbmd.ctx.fill();
 
         var x = 426;
-        var sum = 0;
-
-        for (var i = 0; i < 3; i++){
-
-            var pixel = this.campoVerde6.create(x + sum, 500, playerbmd);
-            pixel.alpha = 0;
-            sum+=6;
-
-        }
-
-
+        var pixel = this.campoVerde6.create(x, 500, playerbmd);
+        pixel.alpha = 0;
     },
     bitMapDataShieldNoPhysics6: function () {
 
-        var platformbmd = this.add.bitmapData(5, 5);
-        platformbmd.ctx.rect(0, 0, 5, 5);
+        var platformbmd = this.add.bitmapData(3, 3);
+        platformbmd.ctx.rect(0, 0, 3, 3);
         platformbmd.ctx.fillStyle = "#fff";
         platformbmd.ctx.fill();
 
@@ -2256,21 +2172,18 @@ Invaders.MechanicOne.prototype = {
         var updateY = 530; //+30
         //var updateX = 160;
 
-        for (var i = 0; i < 9; i++){
+        for (var i = 0; i < 16; i++){
 
-            for (var j = 0; j < 17; j++) {
+            for (var j = 0; j < 6; j++) {
 
-                if (j<3){
                     var updateX = 426;
                     var pixelA = this.campoBlancoNoPhysics6.create(updateX + masIgualCinco, updateY, platformbmd);
                     pixelA.health = 2;
                     // UNO para un pixel, 5 para cinco pixeles, etc.
-                    masIgualCinco+=6;
-                    //updateX+=5;
-                }
+                    masIgualCinco+=3;
             }
             masIgualCinco=0;
-            updateY-=6;
+            updateY-=3;
         }
     },
     pixelVerdeCollision6: function (shield,bullet) {
@@ -2290,13 +2203,13 @@ Invaders.MechanicOne.prototype = {
     overlapCollision7: function () {
 
         var pixeles = [];
-        for (var i = 0; i < 56; i++){
+        for (var i = 0; i < 196; i++){
 
             pixeles.push(this.campoBlancoNoPhysics7.children[i]);
         }
 
         var pixelesVivos = [];
-        for (i = 0; i < 56; i++) {
+        for (i = 0; i < 196; i++) {
             // Si los elementos del array zombies están vivos
             if (pixeles[i].alive ){
                 // Si están vivos los zombies los metemos al array zombiesAlive []
@@ -2306,7 +2219,7 @@ Invaders.MechanicOne.prototype = {
 
         var arr24 = [];
         //                  Tiene que ser igual al valor de i en el loop ---- 4,7,8,14
-        while(arr24.length < 7){
+        while(arr24.length < 14){
             var randomnumber2=Math.floor(Math.random()* pixelesVivos.length); //  Math.floor(Math.random()*(max-min+1)+min);
             var found2=false;
             for(var i2=0;i2<arr24.length;i2++){
@@ -2315,7 +2228,7 @@ Invaders.MechanicOne.prototype = {
             if(!found2)arr24[arr24.length]=randomnumber2;
         }
 
-        for (i = 0; i < 7; i++) {
+        for (i = 0; i < 14; i++) {
             if (pixelesVivos.length > 0){
                 pixelesVivos[arr24[i]].kill();
 
@@ -2335,37 +2248,28 @@ Invaders.MechanicOne.prototype = {
     },
     bitMapDataShieldNoPhysics7: function () {
 
-
-        var platformbmd = this.add.bitmapData(5, 5);
-        platformbmd.ctx.rect(0, 0, 5, 5);
+        var platformbmd = this.add.bitmapData(3, 3);
+        platformbmd.ctx.rect(0, 0, 3, 3);
         platformbmd.ctx.fillStyle = "#fff";
         platformbmd.ctx.fill();
 
-
-        //////////////////////
-        //   HORIZONTAL     //
-        //////////////////////
         var masIgualCinco = 0;
         var updateY = 482;
         var updateX = 560;
-        for (var i = 0; i < 4; i++){
-            for (var j = 0; j < 14; j++) {
+        for (var i = 0; i < 7; i++){
+            for (var j = 0; j < 28; j++) {
+
                 var pixelA = this.campoBlancoNoPhysics7.create(updateX + masIgualCinco, updateY, platformbmd);
-
-
-                masIgualCinco+=6;
+                masIgualCinco+=3;
             }
             masIgualCinco=0;
-            updateY-=6;
+            updateY-=3;
         }
-
-
     },
     pixelVerdeCollision7: function (shield,bullet) {
 
         this.overlapCollision7();
         bullet.kill();
-        //shield.kill();
 
         var haloAnimPrivate = this.haloTwo.getFirstExists(false);
         haloAnimPrivate.reset(bullet.body.x - 20, bullet.body.y + 40);
@@ -2378,13 +2282,13 @@ Invaders.MechanicOne.prototype = {
     overlapCollision8: function () {
 
         var pixeles = [];
-        for (var i = 0; i < 27; i++){
+        for (var i = 0; i < 96; i++){
 
             pixeles.push(this.campoBlancoNoPhysics8.children[i]);
         }
 
         var pixelesVivos = [];
-        for (i = 0; i < 27; i++) {
+        for (i = 0; i < 96; i++) {
             // Si los elementos del array zombies están vivos
             if (pixeles[i].alive ){
                 // Si están vivos los zombies los metemos al array zombiesAlive []
@@ -2394,7 +2298,7 @@ Invaders.MechanicOne.prototype = {
 
         var arr24 = [];
         //                  Tiene que ser igual al valor de i en el loop ---- 4,7,8,14
-        while(arr24.length < 3){
+        while(arr24.length < 12){
             var randomnumber2=Math.floor(Math.random()* pixelesVivos.length); //  Math.floor(Math.random()*(max-min+1)+min);
             var found2=false;
             for(var i2=0;i2<arr24.length;i2++){
@@ -2403,68 +2307,51 @@ Invaders.MechanicOne.prototype = {
             if(!found2)arr24[arr24.length]=randomnumber2;
         }
 
-        for (i = 0; i < 3; i++) {
+        for (i = 0; i < 12; i++) {
             if (pixelesVivos.length > 0){
                 pixelesVivos[arr24[i]].kill();
-
             }
         }
 
     },
     pixeles8: function () {
 
-        var playerbmd = this.add.bitmapData(5, 5);
-        playerbmd.ctx.rect(0, 0, 5, 5);
+        var playerbmd = this.add.bitmapData(18, 5);
+        playerbmd.ctx.rect(0, 0, 18, 5);
         playerbmd.ctx.fillStyle = "#0f0";
         playerbmd.ctx.fill();
 
         var x = 560;
-        var sum = 0;
-
-        for (var i = 0; i < 3; i++){
-
-            var pixel = this.campoVerde8.create(x + sum, 500, playerbmd);
-            pixel.alpha = 0;
-            sum+=6;
-
-        }
-
-
+        var pixel = this.campoVerde8.create(x, 500, playerbmd);
+        pixel.alpha = 0;
     },
     bitMapDataShieldNoPhysics8: function () {
 
-
-        var platformbmd = this.add.bitmapData(5, 5);
-        platformbmd.ctx.rect(0, 0, 5, 5);
+        var platformbmd = this.add.bitmapData(3, 3);
+        platformbmd.ctx.rect(0, 0, 3, 3);
         platformbmd.ctx.fillStyle = "#fff";
         platformbmd.ctx.fill();
 
         var masIgualCinco = 0;
         var updateY = 530; //+30
-        //var updateX = 160;
 
-        for (var i = 0; i < 9; i++){
+        for (var i = 0; i < 16; i++){
 
-            for (var j = 0; j < 17; j++) {
+            for (var j = 0; j < 6; j++) {
 
-                if (j<3){
-                    var updateX = 560;
-                    var pixelA = this.campoBlancoNoPhysics8.create(updateX + masIgualCinco, updateY, platformbmd);
-                    pixelA.health = 2;
-                    // UNO para un pixel, 5 para cinco pixeles, etc.
-                    masIgualCinco+=6;
-                    //updateX+=5;
-                }
+                var updateX = 560;
+                var pixelA = this.campoBlancoNoPhysics8.create(updateX + masIgualCinco, updateY, platformbmd);
+                // UNO para un pixel, 5 para cinco pixeles, etc.
+                masIgualCinco+=3;
             }
             masIgualCinco=0;
-            updateY-=6;
+            updateY-=3;
         }
     },
     pixelVerdeCollision8: function (shield,bullet) {
 
         this.overlapCollision8();
         bullet.kill();
-        //shield.kill();
 
         var haloAnimPrivate = this.haloTwo.getFirstExists(false);
         haloAnimPrivate.reset(bullet.body.x - 20, bullet.body.y + 40);
@@ -2474,13 +2361,13 @@ Invaders.MechanicOne.prototype = {
     overlapCollision9: function () {
 
         var pixeles = [];
-        for (var i = 0; i < 27; i++){
+        for (var i = 0; i < 96; i++){
 
             pixeles.push(this.campoBlancoNoPhysics9.children[i]);
         }
 
         var pixelesVivos = [];
-        for (i = 0; i < 27; i++) {
+        for (i = 0; i < 96; i++) {
             // Si los elementos del array zombies están vivos
             if (pixeles[i].alive ){
                 // Si están vivos los zombies los metemos al array zombiesAlive []
@@ -2490,7 +2377,7 @@ Invaders.MechanicOne.prototype = {
 
         var arr24 = [];
         //                  Tiene que ser igual al valor de i en el loop ---- 4,7,8,14
-        while(arr24.length < 3){
+        while(arr24.length < 12){
             var randomnumber2=Math.floor(Math.random()* pixelesVivos.length); //  Math.floor(Math.random()*(max-min+1)+min);
             var found2=false;
             for(var i2=0;i2<arr24.length;i2++){
@@ -2499,66 +2386,51 @@ Invaders.MechanicOne.prototype = {
             if(!found2)arr24[arr24.length]=randomnumber2;
         }
 
-        for (i = 0; i < 3; i++) {
+        for (i = 0; i < 12; i++) {
             if (pixelesVivos.length > 0){
                 pixelesVivos[arr24[i]].kill();
-
             }
         }
 
     },
     pixeles9: function () {
 
-        var playerbmd = this.add.bitmapData(5, 5);
-        playerbmd.ctx.rect(0, 0, 5, 5);
+        var playerbmd = this.add.bitmapData(18, 5);
+        playerbmd.ctx.rect(0, 0, 18, 5);
         playerbmd.ctx.fillStyle = "#0f0";
         playerbmd.ctx.fill();
 
         var x = 626;
-        var sum = 0;
-
-        for (var i = 0; i < 3; i++){
-
-            var pixel = this.campoVerde9.create(x + sum, 500, playerbmd);
-            pixel.alpha = 0;
-            sum+=6;
-
-        }
+        var pixel = this.campoVerde9.create(x, 500, playerbmd);
+        pixel.alpha = 0;
     },
     bitMapDataShieldNoPhysics9: function () {
 
-
-        var platformbmd = this.add.bitmapData(5, 5);
-        platformbmd.ctx.rect(0, 0, 5, 5);
+        var platformbmd = this.add.bitmapData(3, 3);
+        platformbmd.ctx.rect(0, 0, 3, 3);
         platformbmd.ctx.fillStyle = "#fff";
         platformbmd.ctx.fill();
 
         var masIgualCinco = 0;
         var updateY = 530; //+30
-        //var updateX = 160;
 
-        for (var i = 0; i < 9; i++){
+        for (var i = 0; i < 16; i++){
 
-            for (var j = 0; j < 17; j++) {
+            for (var j = 0; j < 6; j++) {
 
-                if (j<3){
-                    var updateX = 626;
-                    var pixelA = this.campoBlancoNoPhysics9.create(updateX + masIgualCinco, updateY, platformbmd);
-                    pixelA.health = 2;
-                    // UNO para un pixel, 5 para cinco pixeles, etc.
-                    masIgualCinco+=6;
-                    //updateX+=5;
-                }
+                var updateX = 626;
+                var pixelA = this.campoBlancoNoPhysics9.create(updateX + masIgualCinco, updateY, platformbmd);
+                // UNO para un pixel, 5 para cinco pixeles, etc.
+                masIgualCinco+=3;
             }
             masIgualCinco=0;
-            updateY-=6;
+            updateY-=3;
         }
     },
     pixelVerdeCollision9: function (shield,bullet) {
 
         this.overlapCollision9();
         bullet.kill();
-        //shield.kill();
 
         var haloAnimPrivate = this.haloTwo.getFirstExists(false);
         haloAnimPrivate.reset(bullet.body.x - 20, bullet.body.y + 40);
@@ -2571,13 +2443,13 @@ Invaders.MechanicOne.prototype = {
     overlapCollision10: function () {
 
         var pixeles = [];
-        for (var i = 0; i < 56; i++){
+        for (var i = 0; i < 196; i++){
 
             pixeles.push(this.campoBlancoNoPhysics10.children[i]);
         }
 
         var pixelesVivos = [];
-        for (i = 0; i < 56; i++) {
+        for (i = 0; i < 196; i++) {
             // Si los elementos del array zombies están vivos
             if (pixeles[i].alive ){
                 // Si están vivos los zombies los metemos al array zombiesAlive []
@@ -2587,7 +2459,7 @@ Invaders.MechanicOne.prototype = {
 
         var arr24 = [];
         //                  Tiene que ser igual al valor de i en el loop ---- 4,7,8,14
-        while(arr24.length < 7){
+        while(arr24.length < 14){
             var randomnumber2=Math.floor(Math.random()* pixelesVivos.length); //  Math.floor(Math.random()*(max-min+1)+min);
             var found2=false;
             for(var i2=0;i2<arr24.length;i2++){
@@ -2596,10 +2468,9 @@ Invaders.MechanicOne.prototype = {
             if(!found2)arr24[arr24.length]=randomnumber2;
         }
 
-        for (i = 0; i < 7; i++) {
+        for (i = 0; i < 14; i++) {
             if (pixelesVivos.length > 0){
                 pixelesVivos[arr24[i]].kill();
-
             }
         }
     },
@@ -2616,35 +2487,27 @@ Invaders.MechanicOne.prototype = {
     },
     bitMapDataShieldNoPhysics10: function () {
 
-
-        var platformbmd = this.add.bitmapData(5, 5);
-        platformbmd.ctx.rect(0, 0, 5, 5);
+        var platformbmd = this.add.bitmapData(3, 3);
+        platformbmd.ctx.rect(0, 0, 3, 3);
         platformbmd.ctx.fillStyle = "#fff";
         platformbmd.ctx.fill();
 
-
-        //////////////////////
-        //   HORIZONTAL     //
-        //////////////////////
         var masIgualCinco = 0;
         var updateY = 482;
         var updateX = 760;
-        for (var i = 0; i < 4; i++){
-            for (var j = 0; j < 14; j++) {
+        for (var i = 0; i < 7; i++){
+            for (var j = 0; j < 28; j++) {
                 var pixelA = this.campoBlancoNoPhysics10.create(updateX + masIgualCinco, updateY, platformbmd);
-                masIgualCinco+=6;
+                masIgualCinco+=3;
             }
             masIgualCinco=0;
-            updateY-=6;
+            updateY-=3;
         }
-
-
     },
     pixelVerdeCollision10: function (shield,bullet) {
 
         this.overlapCollision10();
         bullet.kill();
-        //shield.kill();
 
         var haloAnimPrivate = this.haloTwo.getFirstExists(false);
         haloAnimPrivate.reset(bullet.body.x - 20, bullet.body.y + 40);
@@ -2656,13 +2519,13 @@ Invaders.MechanicOne.prototype = {
     //////////////////
     overlapCollision11: function () {
         var pixeles = [];
-        for (var i = 0; i < 27; i++){
+        for (var i = 0; i < 96; i++){
 
             pixeles.push(this.campoBlancoNoPhysics11.children[i]);
         }
 
         var pixelesVivos = [];
-        for (i = 0; i < 27; i++) {
+        for (i = 0; i < 96; i++) {
             // Si los elementos del array zombies están vivos
             if (pixeles[i].alive ){
                 // Si están vivos los zombies los metemos al array zombiesAlive []
@@ -2672,7 +2535,7 @@ Invaders.MechanicOne.prototype = {
 
         var arr24 = [];
         //                  Tiene que ser igual al valor de i en el loop ---- 4,7,8,14
-        while(arr24.length < 3){
+        while(arr24.length < 12){
             var randomnumber2=Math.floor(Math.random()* pixelesVivos.length); //  Math.floor(Math.random()*(max-min+1)+min);
             var found2=false;
             for(var i2=0;i2<arr24.length;i2++){
@@ -2681,7 +2544,7 @@ Invaders.MechanicOne.prototype = {
             if(!found2)arr24[arr24.length]=randomnumber2;
         }
 
-        for (i = 0; i < 3; i++) {
+        for (i = 0; i < 12; i++) {
             if (pixelesVivos.length > 0){
                 pixelesVivos[arr24[i]].kill();
 
@@ -2691,58 +2554,41 @@ Invaders.MechanicOne.prototype = {
     },
     pixeles11: function () {
 
-        var playerbmd = this.add.bitmapData(5, 5);
-        playerbmd.ctx.rect(0, 0, 5, 5);
+        var playerbmd = this.add.bitmapData(18, 5);
+        playerbmd.ctx.rect(0, 0, 18, 5);
         playerbmd.ctx.fillStyle = "#0f0";
         playerbmd.ctx.fill();
 
         var x = 760;
-        var sum = 0;
-
-        for (var i = 0; i < 3; i++){
-
-            var pixel = this.campoVerde11.create(x + sum, 500, playerbmd);
-            pixel.alpha = 0;
-            sum+=6;
-
-        }
-
-
+        var pixel = this.campoVerde11.create(x, 500, playerbmd);
+        pixel.alpha = 0;
     },
     bitMapDataShieldNoPhysics11: function () {
 
-
-        var platformbmd = this.add.bitmapData(5, 5);
-        platformbmd.ctx.rect(0, 0, 5, 5);
+        var platformbmd = this.add.bitmapData(3, 3);
+        platformbmd.ctx.rect(0, 0, 3, 3);
         platformbmd.ctx.fillStyle = "#fff";
         platformbmd.ctx.fill();
 
         var masIgualCinco = 0;
         var updateY = 530; //+30
-        //var updateX = 160;
+        for (var i = 0; i < 16; i++){
 
-        for (var i = 0; i < 9; i++){
+            for (var j = 0; j < 6; j++) {
 
-            for (var j = 0; j < 17; j++) {
-
-                if (j<3){
-                    var updateX = 760;
-                    var pixelA = this.campoBlancoNoPhysics11.create(updateX + masIgualCinco, updateY, platformbmd);
-                    pixelA.health = 2;
-                    // UNO para un pixel, 5 para cinco pixeles, etc.
-                    masIgualCinco+=6;
-                    //updateX+=5;
-                }
+                var updateX = 760;
+                var pixelA = this.campoBlancoNoPhysics11.create(updateX + masIgualCinco, updateY, platformbmd);
+                // UNO para un pixel, 5 para cinco pixeles, etc.
+                masIgualCinco+=3;
             }
             masIgualCinco=0;
-            updateY-=6;
+            updateY-=3;
         }
     },
     pixelVerdeCollision11: function (shield,bullet) {
 
         this.overlapCollision11();
         bullet.kill();
-        //shield.kill();
 
         var haloAnimPrivate = this.haloTwo.getFirstExists(false);
         haloAnimPrivate.reset(bullet.body.x - 20, bullet.body.y + 40);
@@ -2752,13 +2598,13 @@ Invaders.MechanicOne.prototype = {
     overlapCollision12: function () {
 
         var pixeles = [];
-        for (var i = 0; i < 27; i++){
+        for (var i = 0; i < 96; i++){
 
             pixeles.push(this.campoBlancoNoPhysics12.children[i]);
         }
 
         var pixelesVivos = [];
-        for (i = 0; i < 27; i++) {
+        for (i = 0; i < 96; i++) {
             // Si los elementos del array zombies están vivos
             if (pixeles[i].alive ){
                 // Si están vivos los zombies los metemos al array zombiesAlive []
@@ -2768,7 +2614,7 @@ Invaders.MechanicOne.prototype = {
 
         var arr24 = [];
         //                  Tiene que ser igual al valor de i en el loop ---- 4,7,8,14
-        while(arr24.length < 3){
+        while(arr24.length < 12){
             var randomnumber2=Math.floor(Math.random()* pixelesVivos.length); //  Math.floor(Math.random()*(max-min+1)+min);
             var found2=false;
             for(var i2=0;i2<arr24.length;i2++){
@@ -2777,7 +2623,7 @@ Invaders.MechanicOne.prototype = {
             if(!found2)arr24[arr24.length]=randomnumber2;
         }
 
-        for (i = 0; i < 3; i++) {
+        for (i = 0; i < 12; i++) {
             if (pixelesVivos.length > 0){
                 pixelesVivos[arr24[i]].kill();
 
@@ -2787,57 +2633,42 @@ Invaders.MechanicOne.prototype = {
     },
     pixeles12: function () {
 
-        var playerbmd = this.add.bitmapData(5, 5);
-        playerbmd.ctx.rect(0, 0, 5, 5);
+        var playerbmd = this.add.bitmapData(18, 5);
+        playerbmd.ctx.rect(0, 0, 18, 5);
         playerbmd.ctx.fillStyle = "#0f0";
         playerbmd.ctx.fill();
 
         var x = 826;
-        var sum = 0;
-
-        for (var i = 0; i < 3; i++){
-
-            var pixel = this.campoVerde12.create(x + sum, 500, playerbmd);
-            pixel.alpha = 0;
-            sum+=6;
-
-        }
-
-
+        var pixel = this.campoVerde12.create(x, 500, playerbmd);
+        pixel.alpha = 0;
     },
     bitMapDataShieldNoPhysics12: function () {
 
-
-        var platformbmd = this.add.bitmapData(5, 5);
-        platformbmd.ctx.rect(0, 0, 5, 5);
+        var platformbmd = this.add.bitmapData(3, 3);
+        platformbmd.ctx.rect(0, 0, 3, 3);
         platformbmd.ctx.fillStyle = "#fff";
         platformbmd.ctx.fill();
 
         var masIgualCinco = 0;
         var updateY = 530; //+30
-        //var updateX = 160;
 
-        for (var i = 0; i < 9; i++){
+        for (var i = 0; i < 16; i++){
 
-            for (var j = 0; j < 17; j++) {
+            for (var j = 0; j < 6; j++) {
 
-                if (j<3){
-                    var updateX = 826;
-                    var pixelA = this.campoBlancoNoPhysics12.create(updateX + masIgualCinco, updateY, platformbmd);
-                    // UNO para un pixel, 5 para cinco pixeles, etc.
-                    masIgualCinco+=6;
-                    //updateX+=5;
-                }
+                var updateX = 826;
+                var pixelA = this.campoBlancoNoPhysics12.create(updateX + masIgualCinco, updateY, platformbmd);
+                // UNO para un pixel, 5 para cinco pixeles, etc.
+                masIgualCinco+=3;
             }
             masIgualCinco=0;
-            updateY-=6;
+            updateY-=3;
         }
     },
     pixelVerdeCollision12: function (shield,bullet) {
 
         this.overlapCollision12();
         bullet.kill();
-        //shield.kill();
 
         var haloAnimPrivate = this.haloTwo.getFirstExists(false);
         haloAnimPrivate.reset(bullet.body.x - 20, bullet.body.y + 40);
