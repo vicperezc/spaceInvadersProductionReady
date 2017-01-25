@@ -435,8 +435,7 @@ Invaders.MechanicThree.prototype = {
 
                 }
             }else if(y>1 && y<4){
-                for (x = 0; x < 10; x++)
-                {
+                for (x = 0; x < 10; x++) {
                     invader = this.invadersGroup.create(x * 60, y * 40, 'invaderBlue');
                     invader.anchor.setTo(0.5, 0.5);
                     invader.frame = 0;

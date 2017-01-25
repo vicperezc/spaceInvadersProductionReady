@@ -2994,8 +2994,6 @@ Invaders.MechanicTwo.prototype = {
             this
         );
 
-
-
         //Bullet to Bullet Collision
         this.physics.arcade.overlap(
             this.bulletRed.bullets,
@@ -3029,6 +3027,7 @@ Invaders.MechanicTwo.prototype = {
             null,
             this
         );
+
         this.physics.arcade.overlap(
             this.ufo,
             this.bulletRed.bullets,
