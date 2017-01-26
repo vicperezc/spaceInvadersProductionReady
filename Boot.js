@@ -22,7 +22,8 @@ var Invaders = {
     youWin10: false,
     youWin11: false,
     youWin12: false,
-    youWin13: false
+    youWin13: false,
+    isMobile: false
 };
 
 Invaders.Boot = function (game) {};
@@ -43,6 +44,7 @@ Invaders.Boot.prototype = {
             //this.scale.scaleMode = Phaser.ScaleManager.RESIZE;
 
         } else {
+            Invaders.isMobile = true;
             //  Same goes for mobile settings.
             //  In this case we're saying "scale the game, no lower than 480x260 and no higher than 1024x768"
             this.scale.scaleMode = Phaser.ScaleManager.SHOW_ALL;

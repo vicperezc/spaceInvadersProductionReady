@@ -1588,73 +1588,7 @@ Invaders.MechanicThree.prototype = {
 
     },
 
-    //De aquí se actualiza el Score
-    scoreTween: function() {
 
-        //this.screenGameoverScore.setText('Score: 0');
-
-
-        // Ponemos la variable tweenedPoints hasta arriba para que no empiece
-        // el score de cero cada vez que se actualiza
-        //this.tweenedPoints = 0;
-
-        var pointsTween = this.add.tween(this);
-
-        //pointsTween.onStart.add(function (){this.spawnEmitter(this.scoreText, 'star', 10, 300);},this);
-
-        pointsTween.to({tweenedPoints: this.scoreNumber }, 800, Phaser.Easing.Linear.None, true, 0);
-
-        pointsTween.onUpdateCallback(function(){
-
-            this.scoreText.setText(' Score: ' + Math.floor(this.tweenedPoints));
-        }, this);
-        // Esta función se pone para que acualice el valor de scoreNumber
-        pointsTween.onComplete.addOnce(function(){
-            this.scoreText.setText(' Score: '+ this.scoreNumber);
-            this.spawnEmitter(this.scoreText, 'star', 10, 300);
-
-
-        }, this);
-
-        pointsTween.start();
-    },
-
-    // De aquí aparecen los +10
-    addPoints: function() {
-        //this._score += 10;
-        //this.textScore.setText('Score: '+this._score);
-
-        var randX = this.rnd.integerInRange(200,this.world.width-200);
-        var randY = this.rnd.integerInRange(200,this.world.height-200);
-        var pointsAdded = this.add.text(null, null, '+50',
-            {
-                font: "28px Arial",
-                fill: "#000",
-                stroke: "#FFF",
-                strokeThickness: 7
-            });
-        pointsAdded.anchor.set(0.5, 0.5);
-        this.add.tween(pointsAdded).to({
-            alpha: 0/*,
-             y: randY-50 */}, 1000, Phaser.Easing.Linear.None, true);
-
-        //this.camera.shake(0.01, 100, true, Phaser.Camera.SHAKE_BOTH, true);
-    },
-
-    spawnEmitter: function(item, particle, number, lifespan, frequency, offsetX, offsetY, gravity) {
-        offsetX = offsetX || 0;
-        offsetY = offsetY || 0;
-        lifespan = lifespan || 2000;
-        frequency = frequency || 0;
-        var emitter = this.game.add.emitter(item.x+100, item.y + 15, number);
-        emitter.maxParticles = number;
-        emitter.makeParticles(particle);
-        emitter.setXSpeed(-500, 500);
-        emitter.setYSpeed(-700, 300);
-        emitter.setScale(2, 1, 2, 1, 500, Phaser.Easing.Linear.None);
-        emitter.gravity = gravity || 250;
-        emitter.start(false, lifespan, frequency, number);
-    },
 
     playerDies: function () {
         var invader;

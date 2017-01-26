@@ -38,11 +38,6 @@ Invaders.MechanicEleven = function () {
     this.pianoFast = null;
     this.triggerNote = null;
 
-    //bmd Shield
-    this.bmdGroup = null;
-    this.bmd = null;
-    this.pixelBmd = null;
-
     this.flama = null;
     this.invaderShootS = null;
     this.ufoShootS = null;
@@ -77,6 +72,46 @@ Invaders.MechanicEleven = function () {
     this.firingTimerA = 0;
     this.firingTimerB = 0;
     this.firingTimerC = 0;
+
+    this.backgroundOne = null;
+    this.backgroundTwo = null;
+    this.backgroundThree = null;
+
+    this.campoVerde1 = null;
+    this.campoBlancoNoPhysics1 = null;
+
+    this.campoBlancoNoPhysics2 = null;
+    this.campoVerde2 = null;
+
+    this.campoBlancoNoPhysics3 = null;
+    this.campoVerde3 = null;
+
+    this.campoBlancoNoPhysics4 = null;
+    this.campoVerde4 = null;
+
+    this.campoBlancoNoPhysics5 = null;
+    this.campoVerde5 = null;
+
+    this.campoBlancoNoPhysics6 = null;
+    this.campoVerde6 = null;
+
+    this.campoBlancoNoPhysics7 = null;
+    this.campoVerde7 = null;
+
+    this.campoBlancoNoPhysics8 = null;
+    this.campoVerde8 = null;
+
+    this.campoBlancoNoPhysics9 = null;
+    this.campoVerde9 = null;
+
+    this.campoBlancoNoPhysics10 = null;
+    this.campoVerde10 = null;
+
+    this.campoBlancoNoPhysics11 = null;
+    this.campoVerde11 = null;
+
+    this.campoBlancoNoPhysics12 = null;
+    this.campoVerde12 = null;
 };
 Invaders.MechanicEleven.prototype = {
 
@@ -84,7 +119,16 @@ Invaders.MechanicEleven.prototype = {
 
         this.world.setBounds(0, 0, 1024, 672);
 
-        this.stage.backgroundColor = '#282c34';
+        this.stage.backgroundColor = '#000427';
+
+        this.backgroundOne = this.add.tileSprite(0, 0, 1024, 672, 'backgroundOne');
+        this.backgroundOne.autoScroll(0, 30);
+
+        this.backgroundTwo = this.add.tileSprite(0, 0, 1024, 672, 'backgroundTwo');
+        this.backgroundTwo.autoScroll(0, 60);
+
+        this.backgroundThree = this.add.tileSprite(0, 0, 1024, 672, 'backgroundThree');
+        this.backgroundThree.autoScroll(0, 50);
 
         //*** Agregamos el make a nuestro UFO en create para que la función de ufo.fireatsprite funcione.
         this.ufo = this.make.sprite(-100, 50, "ufoRubi");
@@ -172,9 +216,89 @@ Invaders.MechanicEleven.prototype = {
         this.flama.animations.play('idle');
         this.spaceship.addChild(this.flama);
 
-        this.bmdGroup = this.add.group();
-        this.bmdGroup.enableBody = true;
-        this.bitMapDataShield();
+        this.campoVerde1 = this.add.group();
+        this.campoVerde1.enableBody = true;
+        this.pixeles1();
+
+        this.campoVerde2 = this.add.group();
+        this.campoVerde2.enableBody = true;
+        this.pixeles2();
+
+        this.campoVerde3 = this.add.group();
+        this.campoVerde3.enableBody = true;
+        this.pixeles3();
+
+        this.campoVerde4 = this.add.group();
+        this.campoVerde4.enableBody = true;
+        this.pixeles4();
+
+        this.campoVerde5 = this.add.group();
+        this.campoVerde5.enableBody = true;
+        this.pixeles5();
+
+        this.campoVerde6 = this.add.group();
+        this.campoVerde6.enableBody = true;
+        this.pixeles6();
+
+        this.campoVerde7 = this.add.group();
+        this.campoVerde7.enableBody = true;
+        this.pixeles7();
+
+        this.campoVerde8 = this.add.group();
+        this.campoVerde8.enableBody = true;
+        this.pixeles8();
+
+        this.campoVerde9 = this.add.group();
+        this.campoVerde9.enableBody = true;
+        this.pixeles9();
+
+        this.campoVerde10 = this.add.group();
+        this.campoVerde10.enableBody = true;
+        this.pixeles10();
+
+        this.campoVerde11 = this.add.group();
+        this.campoVerde11.enableBody = true;
+        this.pixeles11();
+
+        this.campoVerde12 = this.add.group();
+        this.campoVerde12.enableBody = true;
+        this.pixeles12();
+
+        this.campoBlancoNoPhysics1 = this.add.group();
+        this.bitMapDataShieldNoPhysics1();
+
+        this.campoBlancoNoPhysics2 = this.add.group();
+        this.bitMapDataShieldNoPhysics2();
+
+        this.campoBlancoNoPhysics3 = this.add.group();
+        this.bitMapDataShieldNoPhysics3();
+
+        this.campoBlancoNoPhysics4 = this.add.group();
+        this.bitMapDataShieldNoPhysics4();
+
+        this.campoBlancoNoPhysics5 = this.add.group();
+        this.bitMapDataShieldNoPhysics5();
+
+        this.campoBlancoNoPhysics6 = this.add.group();
+        this.bitMapDataShieldNoPhysics6();
+
+        this.campoBlancoNoPhysics7 = this.add.group();
+        this.bitMapDataShieldNoPhysics7();
+
+        this.campoBlancoNoPhysics8 = this.add.group();
+        this.bitMapDataShieldNoPhysics8();
+
+        this.campoBlancoNoPhysics9 = this.add.group();
+        this.bitMapDataShieldNoPhysics9();
+
+        this.campoBlancoNoPhysics10 = this.add.group();
+        this.bitMapDataShieldNoPhysics10();
+
+        this.campoBlancoNoPhysics11 = this.add.group();
+        this.bitMapDataShieldNoPhysics11();
+
+        this.campoBlancoNoPhysics12 = this.add.group();
+        this.bitMapDataShieldNoPhysics12();
 
         //***HALO TWO
         this.haloTwo = this.add.group();
@@ -187,11 +311,10 @@ Invaders.MechanicEleven.prototype = {
         this.lives = this.add.group();
         //game.add.text(game.world.width - 100, 10, 'Lives : ', { font: '34px Arial', fill: '#fff' });
 
-        for (var i = 0; i < 3; i++)
-        {
-            var ship = this.lives.create(this.world.width - 100 + (30 * i), 30, 'spaceship');
+        for (var i = 0; i < 3; i++) {
+            var ship = this.lives.create(this.world.width - 100 + (30 * i), 30, 'hero');
             ship.anchor.setTo(0.5, 0.5);
-            ship.scale.setTo(0.5,0.5);
+            ship.scale.setTo(0.4,0.4);
             //ship.angle = 90;
             ship.alpha = 0.7;
         }
@@ -937,244 +1060,6 @@ Invaders.MechanicEleven.prototype = {
 
     },
 
-    bitMapDataShield: function () {
-
-        this.pixelBmd = this.make.sprite(0, 0, 'pixelAmarillo');
-        this.pixelBmd.anchor.set(0.5);
-        this.physics.enable(this.pixelBmd, Phaser.Physics.ARCADE);
-
-        this.bmd = this.add.bitmapData(this.game.width, this.game.height);
-        this.bmd.addToWorld();
-        this.bmd.smoothed = false;
-        //this.physics.enable(this.bmd, Phaser.Physics.ARCADE);
-        //this.physics.enable(this.spaceship, Phaser.Physics.ARCADE);
-        //bmd.draw(loop, 100, 500);
-
-
-        var playerbmd = this.add.bitmapData(32, 32);
-        playerbmd.ctx.rect(0, 0, 50, 50);
-        playerbmd.ctx.fillStyle = "#0f0";
-        playerbmd.ctx.fill();
-
-        //this.pixelVerde = this.add.sprite(this.world.centerX, this.world.centerY, playerbmd);
-        //this.physics.arcade.enable(this.pixelVerde);
-        //this.pixelVerde.anchor.set(0.5);
-        //this.pixelVerde.body.collideWorldBounds = true;
-
-        var platformbmd = this.add.bitmapData(5, 5);
-        platformbmd.ctx.rect(0, 0, 5, 5);
-        platformbmd.ctx.fillStyle = "#fff";
-        platformbmd.ctx.fill();
-
-        // Important - the platforms need to move via velocity, not via direct moving (tweens etc) otherwise they will not allow the player to 'ride' them
-        /*
-         this.platform1 = this.add.sprite(this.world.centerX - 200, this.world.centerY + 64, platformbmd, 0, this.bmdGroup);
-         this.platform1.anchor.set(0.5);
-         this.platform1.body.immovable = true;
-
-         this.platform1 = this.add.sprite(this.world.centerX - 300, this.world.centerY + 64, platformbmd, 0, this.bmdGroup);
-         this.platform1.anchor.set(0.5);
-         this.platform1.body.immovable = true;*/
-
-        //////////////////////
-        //   Primero        //
-        //////////////////////
-        var masIgualCinco = 0;
-        var updateY = 530; //+30
-        //var updateX = 160;
-
-        for (var i = 0; i < 8; i++){
-
-            for (var j = 0; j < 17; j++) {
-
-                if (j<3){
-                    var updateX = 160;
-                    var pixelA = this.bmdGroup.create(updateX + masIgualCinco, updateY, platformbmd);
-                    pixelA.health = 2;
-                    // UNO para un pixel, 5 para cinco pixeles, etc.
-                    masIgualCinco+=6;
-                    //updateX+=5;
-                }else if (j>13){
-                    updateX = 208;
-                    pixelA = this.bmdGroup.create(updateX + masIgualCinco, updateY, platformbmd);
-                    pixelA.health = 2;
-                    // UNO para un pixer, 5 para cinco pixeles, etc.
-                    masIgualCinco+=6;
-                    //updateX+=5;
-                }
-            }
-            masIgualCinco=0;
-            updateY-=6;
-        }
-        //////////////////////
-        //   HORIZONTAL     //
-        //////////////////////
-        masIgualCinco = 0;
-        updateY = 482;
-        updateX = 160;
-        for (i = 0; i < 4; i++){
-            for (j = 0; j < 14; j++) {
-                pixelA = this.bmdGroup.create(updateX + masIgualCinco, updateY, platformbmd);
-                pixelA.health = 2;
-                //updateX = 100;
-                // UNO para un pixer, 5 para cinco pixeles, etc.
-                masIgualCinco+=6;
-            }
-            masIgualCinco=0;
-            updateY-=6;
-        }
-        //////////////////////
-        //   Segundo        //
-        //////////////////////
-        masIgualCinco = 0;
-        updateY = 530;
-        //var updateX = 160;
-        for (i = 0; i < 8; i++){
-
-            for (j = 0; j < 17; j++) {
-
-                if (j<3){
-                    updateX = 360;
-                    pixelA = this.bmdGroup.create(updateX + masIgualCinco, updateY, platformbmd);
-                    pixelA.health = 2;
-                    // UNO para un pixer, 5 para cinco pixeles, etc.
-                    masIgualCinco+=6;
-                    //updateX+=5;
-                }else if (j>13){
-                    updateX = 408;
-                    pixelA = this.bmdGroup.create(updateX + masIgualCinco, updateY, platformbmd);
-                    pixelA.health = 2;
-                    // UNO para un pixer, 5 para cinco pixeles, etc.
-                    masIgualCinco+=6;
-                    //updateX+=5;
-                }
-            }
-            masIgualCinco=0;
-            updateY-=6;
-        }
-        //////////////////////
-        //   HORIZONTAL     //
-        //////////////////////
-        masIgualCinco = 0;
-        updateY = 482;
-        updateX = 360;
-        for (i = 0; i < 4; i++){
-
-            for (j = 0; j < 14; j++) {
-
-                pixelA = this.bmdGroup.create(updateX + masIgualCinco, updateY, platformbmd);
-                pixelA.health = 2;
-                // UNO para un pixer, 5 para cinco pixeles, etc.
-                masIgualCinco+=6;
-            }
-            masIgualCinco=0;
-            updateY-=6;
-        }
-        //////////////////////
-        //   Tercero        //
-        //////////////////////
-        masIgualCinco = 0;
-        updateY = 530;
-        //var updateX = 160;
-        for (i = 0; i < 8; i++){
-
-            for (j = 0; j < 17; j++) {
-
-                if (j<3){
-                    updateX = 560;
-                    pixelA = this.bmdGroup.create(updateX + masIgualCinco, updateY, platformbmd);
-                    pixelA.health = 2;
-                    // UNO para un pixer, 5 para cinco pixeles, etc.
-                    masIgualCinco+=6;
-                    //updateX+=5;
-                }else if (j>13){
-                    updateX = 608;
-                    pixelA = this.bmdGroup.create(updateX + masIgualCinco, updateY, platformbmd);
-                    pixelA.health = 2;
-                    // UNO para un pixer, 5 para cinco pixeles, etc.
-                    masIgualCinco+=6;
-                    //updateX+=5;
-                }
-            }
-            masIgualCinco=0;
-            updateY-=6;
-        }
-        //////////////////////
-        //   HORIZONTAL     //
-        //////////////////////
-        masIgualCinco = 0;
-        updateY = 482;
-        updateX = 560;
-        for (i = 0; i < 4; i++){
-
-            for (j = 0; j < 14; j++) {
-
-                pixelA = this.bmdGroup.create(updateX + masIgualCinco, updateY, platformbmd);
-                //updateX = 100;
-                pixelA.health = 2;
-                // UNO para un pixer, 5 para cinco pixeles, etc.
-                masIgualCinco+=6;
-            }
-            masIgualCinco=0;
-            updateY-=6;
-        }
-
-
-        //////////////////////
-        //   Cuarto         //
-        //////////////////////
-
-        masIgualCinco = 0;
-        updateY = 530;
-        //var updateX = 160;
-        for (i = 0; i < 8; i++){
-
-            for (j = 0; j < 17; j++) {
-
-                if (j<3){
-                    updateX = 760;
-                    pixelA = this.bmdGroup.create(updateX + masIgualCinco, updateY, platformbmd);
-                    pixelA.health = 2;
-
-                    // UNO para un pixer, 5 para cinco pixeles, etc.
-                    masIgualCinco+=6;
-                    //updateX+=5;
-                }else if (j>13){
-                    updateX = 808;
-                    pixelA = this.bmdGroup.create(updateX + masIgualCinco, updateY, platformbmd);
-                    pixelA.health = 2;
-
-                    // UNO para un pixer, 5 para cinco pixeles, etc.
-                    masIgualCinco+=6;
-                    //updateX+=5;
-                }
-            }
-            masIgualCinco=0;
-            updateY-=6;
-        }
-        //////////////////////
-        //   HORIZONTAL     //
-        //////////////////////
-        masIgualCinco = 0;
-        updateY = 482;
-        updateX = 760;
-        for (i = 0; i < 4; i++){
-
-            for (j = 0; j < 14; j++) {
-
-                pixelA = this.bmdGroup.create(updateX + masIgualCinco, updateY, platformbmd);
-                pixelA.health = 2;
-                //updateX = 100;
-                // UNO para un pixer, 5 para cinco pixeles, etc.
-                masIgualCinco+=6;
-            }
-            masIgualCinco=0;
-            updateY-=6;
-        }
-
-
-    },
-
     ufoExtra: function () {
 
         //AQUI PONEMOS LOS ATRIBUTOS QUE QUEREMOS QUE TENGA NUESTRO UFO CADA VEZ QUE APARECE
@@ -1302,7 +1187,7 @@ Invaders.MechanicEleven.prototype = {
             }
 
             var explosionInvadersPrivate = this.explosionInvader.getFirstExists(false);
-            explosionInvadersPrivate.reset(player.body.x + 15,player.body.y);
+            explosionInvadersPrivate.reset(bullet.body.x,bullet.body.y + 20);
             explosionInvadersPrivate.play('explodeInvaders', 30,false,true);
             this.poofS.play();
 
@@ -1768,11 +1653,9 @@ Invaders.MechanicEleven.prototype = {
             this.poofS.play();
 
             //Actualizamos el Score cada vez que muere un Invader
-
-
             this.scoreNumber+=300;
 
-            //this.scoreText.text = this.scoreString + this.scoreNumber;
+            this.scoreText.text = this.scoreString + this.scoreNumber;
             //this.scoreTween();
 
             // PARA QUE APAREZCA UN +50 CADA VEZ QUE MATAMOS UN INVADER
@@ -1798,26 +1681,11 @@ Invaders.MechanicEleven.prototype = {
             tweenA.to({
                 //alpha: 0,
                 // Queremos que los números se eleven 10 pixeles a partir del centro del enemigo
-                y: enemy.body.y -10 }, 1000, Phaser.Easing.Linear.None, false);
-
-            //to(properties, duration, ease, autoStart, delay, repeat, yoyo)
-            var tweenB = this.add.tween(pointsAdded);
-            tweenB.to({
-                alpha: 0,
-                // Queremos que los números se eleven 10 pixeles a partir del centro del enemigo
-                x: 150, y: 40 }, 200, Phaser.Easing.Linear.None, false);
-            tweenA.chain(tweenB);
+                y: enemy.body.y -10,
+                alpha: 0
+            }, 1500, Phaser.Easing.Linear.None, false);
             tweenA.start();
-            tweenB.onComplete.add(function () {this.scoreTween();},this);
-            //this.spawnEmitter(this.scoreNumber, 'star', 20, 300);
-            //this.spawnEmitter(this.ufo, 'star', 20, 300);
-            //this.spawnEmitter(this.scoreText, 'star', 20, 300);
-
-            //this.camera.shake(0.01, 100, true, Phaser.Camera.SHAKE_BOTH, true);
-
         }
-
-
     },
 
     bulletToBulletCollision: function (bulletOne,bulletTwo) {
@@ -1830,74 +1698,6 @@ Invaders.MechanicEleven.prototype = {
         haloAnimPrivate.reset(bulletTwo.body.x - 20, bulletTwo.body.y + 10);
         haloAnimPrivate.play('haloTwo',30,false,true);
 
-    },
-
-    //De aquí se actualiza el Score
-    scoreTween: function() {
-
-        //this.screenGameoverScore.setText('Score: 0');
-
-
-        // Ponemos la variable tweenedPoints hasta arriba para que no empiece
-        // el score de cero cada vez que se actualiza
-        //this.tweenedPoints = 0;
-
-        var pointsTween = this.add.tween(this);
-
-        //pointsTween.onStart.add(function (){this.spawnEmitter(this.scoreText, 'star', 10, 300);},this);
-
-        pointsTween.to({tweenedPoints: this.scoreNumber }, 800, Phaser.Easing.Linear.None, true, 0);
-
-        pointsTween.onUpdateCallback(function(){
-
-            this.scoreText.setText(' Score: ' + Math.floor(this.tweenedPoints));
-        }, this);
-        // Esta función se pone para que acualice el valor de scoreNumber
-        pointsTween.onComplete.addOnce(function(){
-            this.scoreText.setText(' Score: '+ this.scoreNumber);
-            this.spawnEmitter(this.scoreText, 'star', 10, 300);
-
-
-        }, this);
-
-        pointsTween.start();
-    },
-
-    // De aquí aparecen los +10
-    addPoints: function() {
-        //this._score += 10;
-        //this.textScore.setText('Score: '+this._score);
-
-        var randX = this.rnd.integerInRange(200,this.world.width-200);
-        var randY = this.rnd.integerInRange(200,this.world.height-200);
-        var pointsAdded = this.add.text(null, null, '+50',
-            {
-                font: "28px Arial",
-                fill: "#000",
-                stroke: "#FFF",
-                strokeThickness: 7
-            });
-        pointsAdded.anchor.set(0.5, 0.5);
-        this.add.tween(pointsAdded).to({
-            alpha: 0/*,
-             y: randY-50 */}, 1000, Phaser.Easing.Linear.None, true);
-
-        //this.camera.shake(0.01, 100, true, Phaser.Camera.SHAKE_BOTH, true);
-    },
-
-    spawnEmitter: function(item, particle, number, lifespan, frequency, offsetX, offsetY, gravity) {
-        offsetX = offsetX || 0;
-        offsetY = offsetY || 0;
-        lifespan = lifespan || 2000;
-        frequency = frequency || 0;
-        var emitter = this.game.add.emitter(item.x+100, item.y + 15, number);
-        emitter.maxParticles = number;
-        emitter.makeParticles(particle);
-        emitter.setXSpeed(-500, 500);
-        emitter.setYSpeed(-700, 300);
-        emitter.setScale(2, 1, 2, 1, 500, Phaser.Easing.Linear.None);
-        emitter.gravity = gravity || 250;
-        emitter.start(false, lifespan, frequency, number);
     },
 
     playerDies: function () {
@@ -2082,6 +1882,978 @@ Invaders.MechanicEleven.prototype = {
         this.clickS.play();
     },
 
+    //////////////////
+    // Horizontal 1 //
+    //////////////////
+    overlapCollision1: function () {
+
+        var pixeles = [];
+        for (var i = 0; i < 196; i++){
+
+            pixeles.push(this.campoBlancoNoPhysics1.children[i]);
+        }
+
+        var pixelesVivos = [];
+        for (i = 0; i < 196; i++) {
+            // Si los elementos del array zombies están vivos
+            if (pixeles[i].alive ){
+                // Si están vivos los zombies los metemos al array zombiesAlive []
+                pixelesVivos.push(pixeles[i]);
+            }
+        }
+
+        var arr24 = [];
+        //                  Tiene que ser igual al valor de i en el loop ---- 4,7,8,14
+        while(arr24.length < 14){
+            var randomnumber2=Math.floor(Math.random()* pixelesVivos.length); //  Math.floor(Math.random()*(max-min+1)+min);
+            var found2=false;
+            for(var i2=0;i2<arr24.length;i2++){
+                if(arr24[i2]==randomnumber2){found2=true;break}
+            }
+            if(!found2)arr24[arr24.length]=randomnumber2;
+        }
+
+        for (i = 0; i < 14; i++) {
+            if (pixelesVivos.length > 0){
+                pixelesVivos[arr24[i]].kill();
+
+            }
+        }
+    },
+    pixeles1: function () {
+
+        var playerbmd = this.add.bitmapData(83, 5);
+        playerbmd.ctx.rect(0, 0, 83, 5);
+        playerbmd.ctx.fillStyle = "#0f0";
+        playerbmd.ctx.fill();
+
+        var x = 160;
+        var pixel = this.campoVerde1.create(x, 460, playerbmd);
+        pixel.alpha = 0;
+    },
+    bitMapDataShieldNoPhysics1: function () {
+
+        var platformbmd = this.add.bitmapData(3, 3);
+        platformbmd.ctx.rect(0, 0, 3, 3);
+        platformbmd.ctx.fillStyle = "#fff";
+        platformbmd.ctx.fill();
+
+        var masIgualCinco = 0;
+        var updateY = 482;
+        var updateX = 160;
+        for (var i = 0; i < 7; i++){
+            for (var j = 0; j < 28; j++) {
+                var pixelA = this.campoBlancoNoPhysics1.create(updateX + masIgualCinco, updateY, platformbmd);
+
+                masIgualCinco+=3;
+            }
+            masIgualCinco=0;
+            updateY-=3;
+        }
+    },
+    pixelVerdeCollision1: function (shield,bullet) {
+
+        this.overlapCollision1();
+        bullet.kill();
+        //shield.kill();
+
+        var haloAnimPrivate = this.haloTwo.getFirstExists(false);
+        haloAnimPrivate.reset(bullet.body.x - 20, bullet.body.y + 40);
+        haloAnimPrivate.play('haloTwo',30,false,true);
+    },
+
+    //////////////////
+    // Verticales 1 //
+    //////////////////
+    overlapCollision2: function () {
+
+        var pixeles = [];
+        for (var i = 0; i < 96; i++){
+
+            pixeles.push(this.campoBlancoNoPhysics2.children[i]);
+        }
+
+        var pixelesVivos = [];
+        for (i = 0; i < 96; i++) {
+            // Si los elementos del array zombies están vivos
+            if (pixeles[i].alive ){
+                // Si están vivos los zombies los metemos al array zombiesAlive []
+                pixelesVivos.push(pixeles[i]);
+            }
+        }
+
+        var arr24 = [];
+        //                  Tiene que ser igual al valor de i en el loop ---- 4,7,8,14
+        while(arr24.length < 12){
+            var randomnumber2=Math.floor(Math.random()* pixelesVivos.length); //  Math.floor(Math.random()*(max-min+1)+min);
+            var found2=false;
+            for(var i2=0;i2<arr24.length;i2++){
+                if(arr24[i2]==randomnumber2){found2=true;break}
+            }
+            if(!found2)arr24[arr24.length]=randomnumber2;
+        }
+
+        for (i = 0; i < 12; i++) {
+            if (pixelesVivos.length > 0){
+                pixelesVivos[arr24[i]].kill();
+
+            }
+        }
+
+    },
+    pixeles2: function () {
+
+        var playerbmd = this.add.bitmapData(18, 5);
+        playerbmd.ctx.rect(0, 0, 18, 5);
+        playerbmd.ctx.fillStyle = "#0f0";
+        playerbmd.ctx.fill();
+
+        var x = 160;
+        var pixel = this.campoVerde2.create(x , 500, playerbmd);
+        pixel.alpha = 0;
+    },
+    bitMapDataShieldNoPhysics2: function () {
+
+        var platformbmd = this.add.bitmapData(3, 3);
+        platformbmd.ctx.rect(0, 0, 3, 3);
+        platformbmd.ctx.fillStyle = "#fff";
+        platformbmd.ctx.fill();
+
+        var masIgualCinco = 0;
+        var updateY = 530; //+30
+
+        for (var i = 0; i < 16; i++){
+
+            for (var j = 0; j < 6; j++) {
+
+                var updateX = 160;
+                var pixelA = this.campoBlancoNoPhysics2.create(updateX + masIgualCinco, updateY, platformbmd);
+                masIgualCinco+=3;
+                //updateX+=5;
+
+            }
+            masIgualCinco=0;
+            updateY-=3;
+        }
+    },
+    pixelVerdeCollision2: function (shield,bullet) {
+
+        this.overlapCollision2();
+        bullet.kill();
+        //shield.kill();
+
+        var haloAnimPrivate = this.haloTwo.getFirstExists(false);
+        haloAnimPrivate.reset(bullet.body.x - 20, bullet.body.y + 40);
+        haloAnimPrivate.play('haloTwo',30,false,true);
+    },
+
+    overlapCollision3: function () {
+
+        var pixeles = [];
+        for (var i = 0; i < 96; i++){
+
+            pixeles.push(this.campoBlancoNoPhysics3.children[i]);
+        }
+
+        var pixelesVivos = [];
+        for (i = 0; i < 96; i++) {
+            // Si los elementos del array zombies están vivos
+            if (pixeles[i].alive ){
+                // Si están vivos los zombies los metemos al array zombiesAlive []
+                pixelesVivos.push(pixeles[i]);
+            }
+        }
+
+        var arr24 = [];
+        //                  Tiene que ser igual al valor de i en el loop ---- 4,7,8,14
+        while(arr24.length < 12){
+            var randomnumber2=Math.floor(Math.random()* pixelesVivos.length); //  Math.floor(Math.random()*(max-min+1)+min);
+            var found2=false;
+            for(var i2=0;i2<arr24.length;i2++){
+                if(arr24[i2]==randomnumber2){found2=true;break}
+            }
+            if(!found2)arr24[arr24.length]=randomnumber2;
+        }
+
+        for (i = 0; i < 12; i++) {
+            if (pixelesVivos.length > 0){
+                pixelesVivos[arr24[i]].kill();
+
+            }
+        }
+
+    },
+    pixeles3: function () {
+
+        var playerbmd = this.add.bitmapData(18, 5);
+        playerbmd.ctx.rect(0, 0, 18, 5);
+        playerbmd.ctx.fillStyle = "#0f0";
+        playerbmd.ctx.fill();
+
+        var x = 226;
+        var pixel = this.campoVerde3.create(x, 500, playerbmd);
+        pixel.alpha = 0;
+
+    },
+    bitMapDataShieldNoPhysics3: function () {
+
+        var platformbmd = this.add.bitmapData(3, 3);
+        platformbmd.ctx.rect(0, 0, 3, 3);
+        platformbmd.ctx.fillStyle = "#fff";
+        platformbmd.ctx.fill();
+
+        var masIgualCinco = 0;
+        var updateY = 530; //+30
+        //var updateX = 160;
+
+        for (var i = 0; i < 16; i++){
+
+            for (var j = 0; j < 6; j++) {
+                var updateX = 226;
+                var pixelA = this.campoBlancoNoPhysics3.create(updateX + masIgualCinco, updateY, platformbmd);
+                masIgualCinco+=3;
+            }
+            masIgualCinco=0;
+            updateY-=3;
+        }
+    },
+    pixelVerdeCollision3: function (shield,bullet) {
+
+        this.overlapCollision3();
+        bullet.kill();
+        //shield.kill();
+
+        var haloAnimPrivate = this.haloTwo.getFirstExists(false);
+        haloAnimPrivate.reset(bullet.body.x - 20, bullet.body.y + 40);
+        haloAnimPrivate.play('haloTwo',30,false,true);
+    },
+
+    //////////////////
+    // Horizontal 2 //
+    //////////////////
+    overlapCollision4: function () {
+
+        var pixeles = [];
+        for (var i = 0; i < 196; i++){
+
+            pixeles.push(this.campoBlancoNoPhysics4.children[i]);
+        }
+
+        var pixelesVivos = [];
+        for (i = 0; i < 196; i++) {
+            // Si los elementos del array zombies están vivos
+            if (pixeles[i].alive ){
+                // Si están vivos los zombies los metemos al array zombiesAlive []
+                pixelesVivos.push(pixeles[i]);
+            }
+        }
+
+        var arr24 = [];
+        //                  Tiene que ser igual al valor de i en el loop ---- 4,7,8,14
+        while(arr24.length < 14){
+            var randomnumber2=Math.floor(Math.random()* pixelesVivos.length); //  Math.floor(Math.random()*(max-min+1)+min);
+            var found2=false;
+            for(var i2=0;i2<arr24.length;i2++){
+                if(arr24[i2]==randomnumber2){found2=true;break}
+            }
+            if(!found2)arr24[arr24.length]=randomnumber2;
+        }
+
+        for (i = 0; i < 14; i++) {
+            if (pixelesVivos.length > 0){
+                pixelesVivos[arr24[i]].kill();
+
+            }
+        }
+    },
+    pixeles4: function () {
+
+        var playerbmd = this.add.bitmapData(83, 5);
+        playerbmd.ctx.rect(0, 0, 83, 5);
+        playerbmd.ctx.fillStyle = "#0f0";
+        playerbmd.ctx.fill();
+
+        var x = 360;
+        var pixel = this.campoVerde4.create(x, 460, playerbmd);
+        pixel.alpha = 0;
+    },
+    bitMapDataShieldNoPhysics4: function () {
+
+        var platformbmd = this.add.bitmapData(3, 3);
+        platformbmd.ctx.rect(0, 0, 3, 3);
+        platformbmd.ctx.fillStyle = "#fff";
+        platformbmd.ctx.fill();
+
+        var masIgualCinco = 0;
+        var updateY = 482;
+        var updateX = 360;
+        for (var i = 0; i < 7; i++){
+
+            for (var j = 0; j < 28; j++) {
+
+                var pixelA = this.campoBlancoNoPhysics4.create(updateX + masIgualCinco, updateY, platformbmd);
+                masIgualCinco+=3;
+            }
+            masIgualCinco=0;
+            updateY-=3;
+        }
+    },
+    pixelVerdeCollision4: function (shield,bullet) {
+
+        this.overlapCollision4();
+        bullet.kill();
+        //shield.kill();
+
+        var haloAnimPrivate = this.haloTwo.getFirstExists(false);
+        haloAnimPrivate.reset(bullet.body.x - 20, bullet.body.y + 40);
+        haloAnimPrivate.play('haloTwo',30,false,true);
+    },
+
+    //////////////////
+    // Verticales 2 //
+    //////////////////
+    overlapCollision5: function () {
+
+        var pixeles = [];
+        for (var i = 0; i < 96; i++){
+
+            pixeles.push(this.campoBlancoNoPhysics5.children[i]);
+        }
+
+        var pixelesVivos = [];
+        for (i = 0; i < 96; i++) {
+            // Si los elementos del array zombies están vivos
+            if (pixeles[i].alive ){
+                // Si están vivos los zombies los metemos al array zombiesAlive []
+                pixelesVivos.push(pixeles[i]);
+            }
+        }
+
+        var arr24 = [];
+        //                  Tiene que ser igual al valor de i en el loop ---- 4,7,8,14
+        while(arr24.length < 12){
+            var randomnumber2=Math.floor(Math.random()* pixelesVivos.length); //  Math.floor(Math.random()*(max-min+1)+min);
+            var found2=false;
+            for(var i2=0;i2<arr24.length;i2++){
+                if(arr24[i2]==randomnumber2){found2=true;break}
+            }
+            if(!found2)arr24[arr24.length]=randomnumber2;
+        }
+
+        for (i = 0; i < 12; i++) {
+            if (pixelesVivos.length > 0){
+                pixelesVivos[arr24[i]].kill();
+
+            }
+        }
+
+    },
+    pixeles5: function () {
+
+        var playerbmd = this.add.bitmapData(18, 5);
+        playerbmd.ctx.rect(0, 0, 18, 5);
+        playerbmd.ctx.fillStyle = "#0f0";
+        playerbmd.ctx.fill();
+
+        var x = 360;
+        var pixel = this.campoVerde5.create(x, 500, playerbmd);
+        pixel.alpha = 0;
+    },
+    bitMapDataShieldNoPhysics5: function () {
+
+        var platformbmd = this.add.bitmapData(3, 3);
+        platformbmd.ctx.rect(0, 0, 3, 3);
+        platformbmd.ctx.fillStyle = "#fff";
+        platformbmd.ctx.fill();
+
+        var masIgualCinco = 0;
+        var updateY = 530; //+30
+
+        for (var i = 0; i < 16; i++){
+
+            for (var j = 0; j < 6; j++) {
+
+                var updateX = 360;
+                var pixelA = this.campoBlancoNoPhysics5.create(updateX + masIgualCinco, updateY, platformbmd);
+                pixelA.health = 2;
+                // UNO para un pixel, 5 para cinco pixeles, etc.
+                masIgualCinco+=3;
+            }
+            masIgualCinco=0;
+            updateY-=3;
+        }
+    },
+    pixelVerdeCollision5: function (shield,bullet) {
+
+        this.overlapCollision5();
+        bullet.kill();
+
+        var haloAnimPrivate = this.haloTwo.getFirstExists(false);
+        haloAnimPrivate.reset(bullet.body.x - 20, bullet.body.y + 40);
+        haloAnimPrivate.play('haloTwo',30,false,true);
+    },
+
+    overlapCollision6: function () {
+
+        var pixeles = [];
+        for (var i = 0; i < 96; i++){
+
+            pixeles.push(this.campoBlancoNoPhysics6.children[i]);
+        }
+
+        var pixelesVivos = [];
+        for (i = 0; i < 96; i++) {
+            // Si los elementos del array zombies están vivos
+            if (pixeles[i].alive ){
+                // Si están vivos los zombies los metemos al array zombiesAlive []
+                pixelesVivos.push(pixeles[i]);
+            }
+        }
+
+        var arr24 = [];
+        //                  Tiene que ser igual al valor de i en el loop ---- 4,7,8,14
+        while(arr24.length < 12){
+            var randomnumber2=Math.floor(Math.random()* pixelesVivos.length); //  Math.floor(Math.random()*(max-min+1)+min);
+            var found2=false;
+            for(var i2=0;i2<arr24.length;i2++){
+                if(arr24[i2]==randomnumber2){found2=true;break}
+            }
+            if(!found2)arr24[arr24.length]=randomnumber2;
+        }
+
+        for (i = 0; i < 12; i++) {
+            if (pixelesVivos.length > 0){
+                pixelesVivos[arr24[i]].kill();
+
+            }
+        }
+
+    },
+    pixeles6: function () {
+
+        var playerbmd = this.add.bitmapData(18, 5);
+        playerbmd.ctx.rect(0, 0, 18, 5);
+        playerbmd.ctx.fillStyle = "#0f0";
+        playerbmd.ctx.fill();
+
+        var x = 426;
+        var pixel = this.campoVerde6.create(x, 500, playerbmd);
+        pixel.alpha = 0;
+    },
+    bitMapDataShieldNoPhysics6: function () {
+
+        var platformbmd = this.add.bitmapData(3, 3);
+        platformbmd.ctx.rect(0, 0, 3, 3);
+        platformbmd.ctx.fillStyle = "#fff";
+        platformbmd.ctx.fill();
+
+        var masIgualCinco = 0;
+        var updateY = 530; //+30
+        //var updateX = 160;
+
+        for (var i = 0; i < 16; i++){
+
+            for (var j = 0; j < 6; j++) {
+
+                var updateX = 426;
+                var pixelA = this.campoBlancoNoPhysics6.create(updateX + masIgualCinco, updateY, platformbmd);
+                pixelA.health = 2;
+                // UNO para un pixel, 5 para cinco pixeles, etc.
+                masIgualCinco+=3;
+            }
+            masIgualCinco=0;
+            updateY-=3;
+        }
+    },
+    pixelVerdeCollision6: function (shield,bullet) {
+
+        this.overlapCollision6();
+        bullet.kill();
+        //shield.kill();
+
+        var haloAnimPrivate = this.haloTwo.getFirstExists(false);
+        haloAnimPrivate.reset(bullet.body.x - 20, bullet.body.y + 40);
+        haloAnimPrivate.play('haloTwo',30,false,true);
+    },
+
+    //////////////////
+    // Horizontal 3 //
+    //////////////////
+    overlapCollision7: function () {
+
+        var pixeles = [];
+        for (var i = 0; i < 196; i++){
+
+            pixeles.push(this.campoBlancoNoPhysics7.children[i]);
+        }
+
+        var pixelesVivos = [];
+        for (i = 0; i < 196; i++) {
+            // Si los elementos del array zombies están vivos
+            if (pixeles[i].alive ){
+                // Si están vivos los zombies los metemos al array zombiesAlive []
+                pixelesVivos.push(pixeles[i]);
+            }
+        }
+
+        var arr24 = [];
+        //                  Tiene que ser igual al valor de i en el loop ---- 4,7,8,14
+        while(arr24.length < 14){
+            var randomnumber2=Math.floor(Math.random()* pixelesVivos.length); //  Math.floor(Math.random()*(max-min+1)+min);
+            var found2=false;
+            for(var i2=0;i2<arr24.length;i2++){
+                if(arr24[i2]==randomnumber2){found2=true;break}
+            }
+            if(!found2)arr24[arr24.length]=randomnumber2;
+        }
+
+        for (i = 0; i < 14; i++) {
+            if (pixelesVivos.length > 0){
+                pixelesVivos[arr24[i]].kill();
+
+            }
+        }
+    },
+    pixeles7: function () {
+
+        var playerbmd = this.add.bitmapData(83, 5);
+        playerbmd.ctx.rect(0, 0, 83, 5);
+        playerbmd.ctx.fillStyle = "#0f0";
+        playerbmd.ctx.fill();
+
+        var x = 560;
+        var pixel = this.campoVerde7.create(x, 460, playerbmd);
+        pixel.alpha = 0;
+    },
+    bitMapDataShieldNoPhysics7: function () {
+
+        var platformbmd = this.add.bitmapData(3, 3);
+        platformbmd.ctx.rect(0, 0, 3, 3);
+        platformbmd.ctx.fillStyle = "#fff";
+        platformbmd.ctx.fill();
+
+        var masIgualCinco = 0;
+        var updateY = 482;
+        var updateX = 560;
+        for (var i = 0; i < 7; i++){
+            for (var j = 0; j < 28; j++) {
+
+                var pixelA = this.campoBlancoNoPhysics7.create(updateX + masIgualCinco, updateY, platformbmd);
+                masIgualCinco+=3;
+            }
+            masIgualCinco=0;
+            updateY-=3;
+        }
+    },
+    pixelVerdeCollision7: function (shield,bullet) {
+
+        this.overlapCollision7();
+        bullet.kill();
+
+        var haloAnimPrivate = this.haloTwo.getFirstExists(false);
+        haloAnimPrivate.reset(bullet.body.x - 20, bullet.body.y + 40);
+        haloAnimPrivate.play('haloTwo',30,false,true);
+    },
+
+    //////////////////
+    // Verticales 3 //
+    //////////////////
+    overlapCollision8: function () {
+
+        var pixeles = [];
+        for (var i = 0; i < 96; i++){
+
+            pixeles.push(this.campoBlancoNoPhysics8.children[i]);
+        }
+
+        var pixelesVivos = [];
+        for (i = 0; i < 96; i++) {
+            // Si los elementos del array zombies están vivos
+            if (pixeles[i].alive ){
+                // Si están vivos los zombies los metemos al array zombiesAlive []
+                pixelesVivos.push(pixeles[i]);
+            }
+        }
+
+        var arr24 = [];
+        //                  Tiene que ser igual al valor de i en el loop ---- 4,7,8,14
+        while(arr24.length < 12){
+            var randomnumber2=Math.floor(Math.random()* pixelesVivos.length); //  Math.floor(Math.random()*(max-min+1)+min);
+            var found2=false;
+            for(var i2=0;i2<arr24.length;i2++){
+                if(arr24[i2]==randomnumber2){found2=true;break}
+            }
+            if(!found2)arr24[arr24.length]=randomnumber2;
+        }
+
+        for (i = 0; i < 12; i++) {
+            if (pixelesVivos.length > 0){
+                pixelesVivos[arr24[i]].kill();
+            }
+        }
+
+    },
+    pixeles8: function () {
+
+        var playerbmd = this.add.bitmapData(18, 5);
+        playerbmd.ctx.rect(0, 0, 18, 5);
+        playerbmd.ctx.fillStyle = "#0f0";
+        playerbmd.ctx.fill();
+
+        var x = 560;
+        var pixel = this.campoVerde8.create(x, 500, playerbmd);
+        pixel.alpha = 0;
+    },
+    bitMapDataShieldNoPhysics8: function () {
+
+        var platformbmd = this.add.bitmapData(3, 3);
+        platformbmd.ctx.rect(0, 0, 3, 3);
+        platformbmd.ctx.fillStyle = "#fff";
+        platformbmd.ctx.fill();
+
+        var masIgualCinco = 0;
+        var updateY = 530; //+30
+
+        for (var i = 0; i < 16; i++){
+
+            for (var j = 0; j < 6; j++) {
+
+                var updateX = 560;
+                var pixelA = this.campoBlancoNoPhysics8.create(updateX + masIgualCinco, updateY, platformbmd);
+                // UNO para un pixel, 5 para cinco pixeles, etc.
+                masIgualCinco+=3;
+            }
+            masIgualCinco=0;
+            updateY-=3;
+        }
+    },
+    pixelVerdeCollision8: function (shield,bullet) {
+
+        this.overlapCollision8();
+        bullet.kill();
+
+        var haloAnimPrivate = this.haloTwo.getFirstExists(false);
+        haloAnimPrivate.reset(bullet.body.x - 20, bullet.body.y + 40);
+        haloAnimPrivate.play('haloTwo',30,false,true);
+    },
+
+    overlapCollision9: function () {
+
+        var pixeles = [];
+        for (var i = 0; i < 96; i++){
+
+            pixeles.push(this.campoBlancoNoPhysics9.children[i]);
+        }
+
+        var pixelesVivos = [];
+        for (i = 0; i < 96; i++) {
+            // Si los elementos del array zombies están vivos
+            if (pixeles[i].alive ){
+                // Si están vivos los zombies los metemos al array zombiesAlive []
+                pixelesVivos.push(pixeles[i]);
+            }
+        }
+
+        var arr24 = [];
+        //                  Tiene que ser igual al valor de i en el loop ---- 4,7,8,14
+        while(arr24.length < 12){
+            var randomnumber2=Math.floor(Math.random()* pixelesVivos.length); //  Math.floor(Math.random()*(max-min+1)+min);
+            var found2=false;
+            for(var i2=0;i2<arr24.length;i2++){
+                if(arr24[i2]==randomnumber2){found2=true;break}
+            }
+            if(!found2)arr24[arr24.length]=randomnumber2;
+        }
+
+        for (i = 0; i < 12; i++) {
+            if (pixelesVivos.length > 0){
+                pixelesVivos[arr24[i]].kill();
+            }
+        }
+
+    },
+    pixeles9: function () {
+
+        var playerbmd = this.add.bitmapData(18, 5);
+        playerbmd.ctx.rect(0, 0, 18, 5);
+        playerbmd.ctx.fillStyle = "#0f0";
+        playerbmd.ctx.fill();
+
+        var x = 626;
+        var pixel = this.campoVerde9.create(x, 500, playerbmd);
+        pixel.alpha = 0;
+    },
+    bitMapDataShieldNoPhysics9: function () {
+
+        var platformbmd = this.add.bitmapData(3, 3);
+        platformbmd.ctx.rect(0, 0, 3, 3);
+        platformbmd.ctx.fillStyle = "#fff";
+        platformbmd.ctx.fill();
+
+        var masIgualCinco = 0;
+        var updateY = 530; //+30
+
+        for (var i = 0; i < 16; i++){
+
+            for (var j = 0; j < 6; j++) {
+
+                var updateX = 626;
+                var pixelA = this.campoBlancoNoPhysics9.create(updateX + masIgualCinco, updateY, platformbmd);
+                // UNO para un pixel, 5 para cinco pixeles, etc.
+                masIgualCinco+=3;
+            }
+            masIgualCinco=0;
+            updateY-=3;
+        }
+    },
+    pixelVerdeCollision9: function (shield,bullet) {
+
+        this.overlapCollision9();
+        bullet.kill();
+
+        var haloAnimPrivate = this.haloTwo.getFirstExists(false);
+        haloAnimPrivate.reset(bullet.body.x - 20, bullet.body.y + 40);
+        haloAnimPrivate.play('haloTwo',30,false,true);
+    },
+
+    //////////////////
+    // Horizontal 4 //
+    //////////////////
+    overlapCollision10: function () {
+
+        var pixeles = [];
+        for (var i = 0; i < 196; i++){
+
+            pixeles.push(this.campoBlancoNoPhysics10.children[i]);
+        }
+
+        var pixelesVivos = [];
+        for (i = 0; i < 196; i++) {
+            // Si los elementos del array zombies están vivos
+            if (pixeles[i].alive ){
+                // Si están vivos los zombies los metemos al array zombiesAlive []
+                pixelesVivos.push(pixeles[i]);
+            }
+        }
+
+        var arr24 = [];
+        //                  Tiene que ser igual al valor de i en el loop ---- 4,7,8,14
+        while(arr24.length < 14){
+            var randomnumber2=Math.floor(Math.random()* pixelesVivos.length); //  Math.floor(Math.random()*(max-min+1)+min);
+            var found2=false;
+            for(var i2=0;i2<arr24.length;i2++){
+                if(arr24[i2]==randomnumber2){found2=true;break}
+            }
+            if(!found2)arr24[arr24.length]=randomnumber2;
+        }
+
+        for (i = 0; i < 14; i++) {
+            if (pixelesVivos.length > 0){
+                pixelesVivos[arr24[i]].kill();
+            }
+        }
+    },
+    pixeles10: function () {
+
+        var playerbmd = this.add.bitmapData(83, 5);
+        playerbmd.ctx.rect(0, 0, 83, 5);
+        playerbmd.ctx.fillStyle = "#0f0";
+        playerbmd.ctx.fill();
+
+        var x = 760;
+        var pixel = this.campoVerde10.create(x , 460, playerbmd);
+        pixel.alpha = 0;
+    },
+    bitMapDataShieldNoPhysics10: function () {
+
+        var platformbmd = this.add.bitmapData(3, 3);
+        platformbmd.ctx.rect(0, 0, 3, 3);
+        platformbmd.ctx.fillStyle = "#fff";
+        platformbmd.ctx.fill();
+
+        var masIgualCinco = 0;
+        var updateY = 482;
+        var updateX = 760;
+        for (var i = 0; i < 7; i++){
+            for (var j = 0; j < 28; j++) {
+                var pixelA = this.campoBlancoNoPhysics10.create(updateX + masIgualCinco, updateY, platformbmd);
+                masIgualCinco+=3;
+            }
+            masIgualCinco=0;
+            updateY-=3;
+        }
+    },
+    pixelVerdeCollision10: function (shield,bullet) {
+
+        this.overlapCollision10();
+        bullet.kill();
+
+        var haloAnimPrivate = this.haloTwo.getFirstExists(false);
+        haloAnimPrivate.reset(bullet.body.x - 20, bullet.body.y + 40);
+        haloAnimPrivate.play('haloTwo',30,false,true);
+    },
+
+    //////////////////
+    // Verticales 4 //
+    //////////////////
+    overlapCollision11: function () {
+        var pixeles = [];
+        for (var i = 0; i < 96; i++){
+
+            pixeles.push(this.campoBlancoNoPhysics11.children[i]);
+        }
+
+        var pixelesVivos = [];
+        for (i = 0; i < 96; i++) {
+            // Si los elementos del array zombies están vivos
+            if (pixeles[i].alive ){
+                // Si están vivos los zombies los metemos al array zombiesAlive []
+                pixelesVivos.push(pixeles[i]);
+            }
+        }
+
+        var arr24 = [];
+        //                  Tiene que ser igual al valor de i en el loop ---- 4,7,8,14
+        while(arr24.length < 12){
+            var randomnumber2=Math.floor(Math.random()* pixelesVivos.length); //  Math.floor(Math.random()*(max-min+1)+min);
+            var found2=false;
+            for(var i2=0;i2<arr24.length;i2++){
+                if(arr24[i2]==randomnumber2){found2=true;break}
+            }
+            if(!found2)arr24[arr24.length]=randomnumber2;
+        }
+
+        for (i = 0; i < 12; i++) {
+            if (pixelesVivos.length > 0){
+                pixelesVivos[arr24[i]].kill();
+
+            }
+        }
+
+    },
+    pixeles11: function () {
+
+        var playerbmd = this.add.bitmapData(18, 5);
+        playerbmd.ctx.rect(0, 0, 18, 5);
+        playerbmd.ctx.fillStyle = "#0f0";
+        playerbmd.ctx.fill();
+
+        var x = 760;
+        var pixel = this.campoVerde11.create(x, 500, playerbmd);
+        pixel.alpha = 0;
+    },
+    bitMapDataShieldNoPhysics11: function () {
+
+        var platformbmd = this.add.bitmapData(3, 3);
+        platformbmd.ctx.rect(0, 0, 3, 3);
+        platformbmd.ctx.fillStyle = "#fff";
+        platformbmd.ctx.fill();
+
+        var masIgualCinco = 0;
+        var updateY = 530; //+30
+        for (var i = 0; i < 16; i++){
+
+            for (var j = 0; j < 6; j++) {
+
+                var updateX = 760;
+                var pixelA = this.campoBlancoNoPhysics11.create(updateX + masIgualCinco, updateY, platformbmd);
+                // UNO para un pixel, 5 para cinco pixeles, etc.
+                masIgualCinco+=3;
+            }
+            masIgualCinco=0;
+            updateY-=3;
+        }
+    },
+    pixelVerdeCollision11: function (shield,bullet) {
+
+        this.overlapCollision11();
+        bullet.kill();
+
+        var haloAnimPrivate = this.haloTwo.getFirstExists(false);
+        haloAnimPrivate.reset(bullet.body.x - 20, bullet.body.y + 40);
+        haloAnimPrivate.play('haloTwo',30,false,true);
+    },
+
+    overlapCollision12: function () {
+
+        var pixeles = [];
+        for (var i = 0; i < 96; i++){
+
+            pixeles.push(this.campoBlancoNoPhysics12.children[i]);
+        }
+
+        var pixelesVivos = [];
+        for (i = 0; i < 96; i++) {
+            // Si los elementos del array zombies están vivos
+            if (pixeles[i].alive ){
+                // Si están vivos los zombies los metemos al array zombiesAlive []
+                pixelesVivos.push(pixeles[i]);
+            }
+        }
+
+        var arr24 = [];
+        //                  Tiene que ser igual al valor de i en el loop ---- 4,7,8,14
+        while(arr24.length < 12){
+            var randomnumber2=Math.floor(Math.random()* pixelesVivos.length); //  Math.floor(Math.random()*(max-min+1)+min);
+            var found2=false;
+            for(var i2=0;i2<arr24.length;i2++){
+                if(arr24[i2]==randomnumber2){found2=true;break}
+            }
+            if(!found2)arr24[arr24.length]=randomnumber2;
+        }
+
+        for (i = 0; i < 12; i++) {
+            if (pixelesVivos.length > 0){
+                pixelesVivos[arr24[i]].kill();
+
+            }
+        }
+
+    },
+    pixeles12: function () {
+
+        var playerbmd = this.add.bitmapData(18, 5);
+        playerbmd.ctx.rect(0, 0, 18, 5);
+        playerbmd.ctx.fillStyle = "#0f0";
+        playerbmd.ctx.fill();
+
+        var x = 826;
+        var pixel = this.campoVerde12.create(x, 500, playerbmd);
+        pixel.alpha = 0;
+    },
+    bitMapDataShieldNoPhysics12: function () {
+
+        var platformbmd = this.add.bitmapData(3, 3);
+        platformbmd.ctx.rect(0, 0, 3, 3);
+        platformbmd.ctx.fillStyle = "#fff";
+        platformbmd.ctx.fill();
+
+        var masIgualCinco = 0;
+        var updateY = 530; //+30
+
+        for (var i = 0; i < 16; i++){
+
+            for (var j = 0; j < 6; j++) {
+
+                var updateX = 826;
+                var pixelA = this.campoBlancoNoPhysics12.create(updateX + masIgualCinco, updateY, platformbmd);
+                // UNO para un pixel, 5 para cinco pixeles, etc.
+                masIgualCinco+=3;
+            }
+            masIgualCinco=0;
+            updateY-=3;
+        }
+    },
+    pixelVerdeCollision12: function (shield,bullet) {
+
+        this.overlapCollision12();
+        bullet.kill();
+
+        var haloAnimPrivate = this.haloTwo.getFirstExists(false);
+        haloAnimPrivate.reset(bullet.body.x - 20, bullet.body.y + 40);
+        haloAnimPrivate.play('haloTwo',30,false,true);
+    },
+
     update: function () {
 
         if (this.spaceship.alive && this.counter < 264){
@@ -2109,38 +2881,660 @@ Invaders.MechanicEleven.prototype = {
                     this.enemyFiresC();
                 }
             }
-
         }
 
+        /////////////
+        // Campo 1 //
+        /////////////
 
+        if (this.campoBlancoNoPhysics1.countLiving() === 0) {
+            //this.campoVerde1.callAll('kill');
+            //this.campoVerde1.forEach(function (c) { c.kill(); },this);
+            this.campoVerde1.forEachAlive(
+                function(c) {
+                    c.kill();
+                },
+                this
+            );
+        }
 
-        // Shield Collision
-        this.physics.arcade.overlap(this.bmdGroup,this.bulletRed.bullets,Invaders.items.shieldCollision,null,this);
-        this.physics.arcade.overlap(this.bmdGroup,this.invaderBullet.bullets,Invaders.items.shieldCollision,null,this);
-        this.physics.arcade.overlap(this.bmdGroup,this.invaderBulletB.bullets,Invaders.items.shieldCollision,null,this);
-        this.physics.arcade.overlap(this.bmdGroup,this.invaderBulletC.bullets,Invaders.items.shieldCollision,null,this);
-        this.physics.arcade.overlap(this.bmdGroup, this.invaderBulletDos.bullets,Invaders.items.shieldCollision,null,this);
+        if (this.campoBlancoNoPhysics2.countLiving() === 0) {
+            this.campoVerde2.forEachAlive(
+                function(c) {
+                    c.kill();
+                },
+                this
+            );
+        }
 
-        //Collision
-        this.physics.arcade.overlap(this.bulletRed.bullets,this.invaderBullet.bullets,this.bulletToBulletCollision,null,this);
-        this.physics.arcade.overlap(this.bulletRed.bullets,this.invaderBulletB.bullets,this.bulletToBulletCollision,null,this);
-        this.physics.arcade.overlap(this.bulletRed.bullets,this.invaderBulletC.bullets,this.bulletToBulletCollision,null,this);
-        this.physics.arcade.overlap(this.bulletRed.bullets,this.invaderBulletDos.bullets,this.bulletToBulletCollision,null,this); // Cuando el UFO DISPARA
+        if (this.campoBlancoNoPhysics3.countLiving() === 0) {
+            this.campoVerde3.forEachAlive(
+                function(c) {
+                    c.kill();
+                },
+                this
+            );
+        }
 
-        this.physics.arcade.overlap(this.campoDeFuerzaGroup, this.bulletRed.bullets,this.campoDeFuerzaBulletCollision,null,this);
-        this.physics.arcade.overlap(this.invadersGroup, this.bulletRed.bullets,this.playerHitsInvaders,null,this);
-        this.physics.arcade.overlap(this.ufo,this.bulletRed.bullets,this.playerHitsUfo,null,this);
+        /////////////
+        // Campo 2 //
+        /////////////
+        if (this.campoBlancoNoPhysics4.countLiving() === 0) {
+            this.campoVerde4.forEachAlive(
+                function(c) {
+                    c.kill();
+                },
+                this
+            );
+        }
+        if (this.campoBlancoNoPhysics5.countLiving() === 0) {
+            this.campoVerde5.forEachAlive(
+                function(c) {
+                    c.kill();
+                },
+                this
+            );
+        }
+        if (this.campoBlancoNoPhysics6.countLiving() === 0) {
+            this.campoVerde6.forEachAlive(
+                function(c) {
+                    c.kill();
+                },
+                this
+            );
+        }
 
-        this.physics.arcade.overlap(this.spaceship, this.invaderBullet.bullets, this.enemyHitsPlayer,null,this);
-        this.physics.arcade.overlap(this.spaceship, this.invaderBulletB.bullets, this.enemyHitsPlayer,null,this);
-        this.physics.arcade.overlap(this.spaceship, this.invaderBulletC.bullets, this.enemyHitsPlayer,null,this);
-        this.physics.arcade.overlap(this.spaceship, this.invaderBulletDos.bullets, this.enemyHitsPlayer,null,this);
+        /////////////
+        // Campo 3 //
+        /////////////
+        if (this.campoBlancoNoPhysics7.countLiving() === 0) {
+            this.campoVerde7.forEachAlive(
+                function(c) {
+                    c.kill();
+                },
+                this
+            );
+        }
+        if (this.campoBlancoNoPhysics8.countLiving() === 0) {
+            this.campoVerde8.forEachAlive(
+                function(c) {
+                    c.kill();
+                },
+                this
+            );
+        }
+        if (this.campoBlancoNoPhysics9.countLiving() === 0) {
+            this.campoVerde9.forEachAlive(
+                function(c) {
+                    c.kill();
+                },
+                this
+            );
+        }
 
-        //HandyButton
+        /////////////
+        // Campo 4 //
+        /////////////
+        if (this.campoBlancoNoPhysics10.countLiving() === 0) {
+            this.campoVerde10.forEachAlive(
+                function(c) {
+                    c.kill();
+                },
+                this
+            );
+        }
+        if (this.campoBlancoNoPhysics11.countLiving() === 0) {
+            this.campoVerde11.forEachAlive(
+                function(c) {
+                    c.kill();
+                },
+                this
+            );
+        }
+        if (this.campoBlancoNoPhysics12.countLiving() === 0) {
+            this.campoVerde12.forEachAlive(
+                function(c) {
+                    c.kill();
+                },
+                this
+            );
+        }
 
-        var handyButton = this.input.keyboard.addKey(Phaser.Keyboard.W);
+        //*** Hero Shield Collision
+        this.physics.arcade.overlap(
+            this.campoVerde1,
+            this.bulletRed.bullets,
+            this.pixelVerdeCollision1,
+            null,
+            this
+        );
+        this.physics.arcade.overlap(
+            this.campoVerde2,
+            this.bulletRed.bullets,
+            this.pixelVerdeCollision2,
+            null,
+            this
+        );
+        this.physics.arcade.overlap(
+            this.campoVerde3,
+            this.bulletRed.bullets,
+            this.pixelVerdeCollision3,
+            null,
+            this
+        );
 
-        handyButton.onDown.add(this.gameOverLogic,this);
+        this.physics.arcade.overlap(
+            this.campoVerde4,
+            this.bulletRed.bullets,
+            this.pixelVerdeCollision4,
+            null,
+            this
+        );
+        this.physics.arcade.overlap(
+            this.campoVerde5,
+            this.bulletRed.bullets,
+            this.pixelVerdeCollision5,
+            null,
+            this
+        );
+        this.physics.arcade.overlap(
+            this.campoVerde6,
+            this.bulletRed.bullets,
+            this.pixelVerdeCollision6,
+            null,
+            this
+        );
+
+        this.physics.arcade.overlap(
+            this.campoVerde7,
+            this.bulletRed.bullets,
+            this.pixelVerdeCollision7,
+            null,
+            this
+        );
+        this.physics.arcade.overlap(
+            this.campoVerde8,
+            this.bulletRed.bullets,
+            this.pixelVerdeCollision8,
+            null,
+            this
+        );
+        this.physics.arcade.overlap(
+            this.campoVerde9,
+            this.bulletRed.bullets,
+            this.pixelVerdeCollision9,
+            null,
+            this
+        );
+
+        this.physics.arcade.overlap(
+            this.campoVerde10,
+            this.bulletRed.bullets,
+            this.pixelVerdeCollision10,
+            null,
+            this
+        );
+        this.physics.arcade.overlap(
+            this.campoVerde11,
+            this.bulletRed.bullets,
+            this.pixelVerdeCollision11,
+            null,
+            this
+        );
+        this.physics.arcade.overlap(
+            this.campoVerde12,
+            this.bulletRed.bullets,
+            this.pixelVerdeCollision12,
+            null,
+            this
+        );
+
+        //*** Invaders Shield Collision
+        this.physics.arcade.overlap(
+            this.campoVerde1,
+            this.invaderBullet.bullets,
+            this.pixelVerdeCollision1,
+            null,
+            this
+        );
+        this.physics.arcade.overlap(
+            this.campoVerde2,
+            this.invaderBullet.bullets,
+            this.pixelVerdeCollision2,
+            null,
+            this
+        );
+        this.physics.arcade.overlap(
+            this.campoVerde3,
+            this.invaderBullet.bullets,
+            this.pixelVerdeCollision3,
+            null,
+            this
+        );
+
+        this.physics.arcade.overlap(
+            this.campoVerde4,
+            this.invaderBullet.bullets,
+            this.pixelVerdeCollision4,
+            null,
+            this
+        );
+        this.physics.arcade.overlap(
+            this.campoVerde5,
+            this.invaderBullet.bullets,
+            this.pixelVerdeCollision5,
+            null,
+            this
+        );
+        this.physics.arcade.overlap(
+            this.campoVerde6,
+            this.invaderBullet.bullets,
+            this.pixelVerdeCollision6,
+            null,
+            this
+        );
+
+        this.physics.arcade.overlap(
+            this.campoVerde7,
+            this.invaderBullet.bullets,
+            this.pixelVerdeCollision7,
+            null,
+            this
+        );
+        this.physics.arcade.overlap(
+            this.campoVerde8,
+            this.invaderBullet.bullets,
+            this.pixelVerdeCollision8,
+            null,
+            this
+        );
+        this.physics.arcade.overlap(
+            this.campoVerde9,
+            this.invaderBullet.bullets,
+            this.pixelVerdeCollision9,
+            null,
+            this
+        );
+
+        this.physics.arcade.overlap(
+            this.campoVerde10,
+            this.invaderBullet.bullets,
+            this.pixelVerdeCollision10,
+            null,
+            this
+        );
+        this.physics.arcade.overlap(
+            this.campoVerde11,
+            this.invaderBullet.bullets,
+            this.pixelVerdeCollision11,
+            null,
+            this
+        );
+        this.physics.arcade.overlap(
+            this.campoVerde12,
+            this.invaderBullet.bullets,
+            this.pixelVerdeCollision12,
+            null,
+            this
+        );
+
+        //*** Invaders Shield Collision B
+        this.physics.arcade.overlap(
+            this.campoVerde1,
+            this.invaderBulletB.bullets,
+            this.pixelVerdeCollision1,
+            null,
+            this
+        );
+        this.physics.arcade.overlap(
+            this.campoVerde2,
+            this.invaderBulletB.bullets,
+            this.pixelVerdeCollision2,
+            null,
+            this
+        );
+        this.physics.arcade.overlap(
+            this.campoVerde3,
+            this.invaderBulletB.bullets,
+            this.pixelVerdeCollision3,
+            null,
+            this
+        );
+
+        this.physics.arcade.overlap(
+            this.campoVerde4,
+            this.invaderBulletB.bullets,
+            this.pixelVerdeCollision4,
+            null,
+            this
+        );
+        this.physics.arcade.overlap(
+            this.campoVerde5,
+            this.invaderBulletB.bullets,
+            this.pixelVerdeCollision5,
+            null,
+            this
+        );
+        this.physics.arcade.overlap(
+            this.campoVerde6,
+            this.invaderBulletB.bullets,
+            this.pixelVerdeCollision6,
+            null,
+            this
+        );
+
+        this.physics.arcade.overlap(
+            this.campoVerde7,
+            this.invaderBulletB.bullets,
+            this.pixelVerdeCollision7,
+            null,
+            this
+        );
+        this.physics.arcade.overlap(
+            this.campoVerde8,
+            this.invaderBulletB.bullets,
+            this.pixelVerdeCollision8,
+            null,
+            this
+        );
+        this.physics.arcade.overlap(
+            this.campoVerde9,
+            this.invaderBulletB.bullets,
+            this.pixelVerdeCollision9,
+            null,
+            this
+        );
+
+        this.physics.arcade.overlap(
+            this.campoVerde10,
+            this.invaderBulletB.bullets,
+            this.pixelVerdeCollision10,
+            null,
+            this
+        );
+        this.physics.arcade.overlap(
+            this.campoVerde11,
+            this.invaderBulletB.bullets,
+            this.pixelVerdeCollision11,
+            null,
+            this
+        );
+        this.physics.arcade.overlap(
+            this.campoVerde12,
+            this.invaderBulletB.bullets,
+            this.pixelVerdeCollision12,
+            null,
+            this
+        );
+
+        //*** Invaders Shield Collision C
+        this.physics.arcade.overlap(
+            this.campoVerde1,
+            this.invaderBulletC.bullets,
+            this.pixelVerdeCollision1,
+            null,
+            this
+        );
+        this.physics.arcade.overlap(
+            this.campoVerde2,
+            this.invaderBulletC.bullets,
+            this.pixelVerdeCollision2,
+            null,
+            this
+        );
+        this.physics.arcade.overlap(
+            this.campoVerde3,
+            this.invaderBulletC.bullets,
+            this.pixelVerdeCollision3,
+            null,
+            this
+        );
+
+        this.physics.arcade.overlap(
+            this.campoVerde4,
+            this.invaderBulletC.bullets,
+            this.pixelVerdeCollision4,
+            null,
+            this
+        );
+        this.physics.arcade.overlap(
+            this.campoVerde5,
+            this.invaderBulletC.bullets,
+            this.pixelVerdeCollision5,
+            null,
+            this
+        );
+        this.physics.arcade.overlap(
+            this.campoVerde6,
+            this.invaderBulletC.bullets,
+            this.pixelVerdeCollision6,
+            null,
+            this
+        );
+
+        this.physics.arcade.overlap(
+            this.campoVerde7,
+            this.invaderBulletC.bullets,
+            this.pixelVerdeCollision7,
+            null,
+            this
+        );
+        this.physics.arcade.overlap(
+            this.campoVerde8,
+            this.invaderBulletC.bullets,
+            this.pixelVerdeCollision8,
+            null,
+            this
+        );
+        this.physics.arcade.overlap(
+            this.campoVerde9,
+            this.invaderBulletC.bullets,
+            this.pixelVerdeCollision9,
+            null,
+            this
+        );
+
+        this.physics.arcade.overlap(
+            this.campoVerde10,
+            this.invaderBulletC.bullets,
+            this.pixelVerdeCollision10,
+            null,
+            this
+        );
+        this.physics.arcade.overlap(
+            this.campoVerde11,
+            this.invaderBulletC.bullets,
+            this.pixelVerdeCollision11,
+            null,
+            this
+        );
+        this.physics.arcade.overlap(
+            this.campoVerde12,
+            this.invaderBulletC.bullets,
+            this.pixelVerdeCollision12,
+            null,
+            this
+        );
+
+        //Bullet to Bullet Collision
+        this.physics.arcade.overlap(
+            this.bulletRed.bullets,
+            this.invaderBullet.bullets,
+            this.bulletToBulletCollision,
+            null,
+            this
+        );
+
+        this.physics.arcade.overlap(
+            this.bulletRed.bullets,
+            this.invaderBulletB.bullets,
+            this.bulletToBulletCollision,
+            null,
+            this
+        );
+
+        this.physics.arcade.overlap(
+            this.bulletRed.bullets,
+            this.invaderBulletC.bullets,
+            this.bulletToBulletCollision,
+            null,
+            this
+        );
+
+        this.physics.arcade.overlap(
+            this.bulletRed.bullets,
+            this.invaderBulletDos.bullets,
+            this.bulletToBulletCollision,
+            null,
+            this
+        );
+
+        //*** UFO Shield Collision
+        this.physics.arcade.overlap(
+            this.campoVerde1,
+            this.invaderBulletDos.bullets,
+            this.pixelVerdeCollision1,
+            null,
+            this
+        );
+        this.physics.arcade.overlap(
+            this.campoVerde2,
+            this.invaderBulletDos.bullets,
+            this.pixelVerdeCollision2,
+            null,
+            this
+        );
+        this.physics.arcade.overlap(
+            this.campoVerde3,
+            this.invaderBulletDos.bullets,
+            this.pixelVerdeCollision3,
+            null,
+            this
+        );
+
+        this.physics.arcade.overlap(
+            this.campoVerde4,
+            this.invaderBulletDos.bullets,
+            this.pixelVerdeCollision4,
+            null,
+            this
+        );
+        this.physics.arcade.overlap(
+            this.campoVerde5,
+            this.invaderBulletDos.bullets,
+            this.pixelVerdeCollision5,
+            null,
+            this
+        );
+        this.physics.arcade.overlap(
+            this.campoVerde6,
+            this.invaderBulletDos.bullets,
+            this.pixelVerdeCollision6,
+            null,
+            this
+        );
+
+        this.physics.arcade.overlap(
+            this.campoVerde7,
+            this.invaderBulletDos.bullets,
+            this.pixelVerdeCollision7,
+            null,
+            this
+        );
+        this.physics.arcade.overlap(
+            this.campoVerde8,
+            this.invaderBulletDos.bullets,
+            this.pixelVerdeCollision8,
+            null,
+            this
+        );
+        this.physics.arcade.overlap(
+            this.campoVerde9,
+            this.invaderBulletDos.bullets,
+            this.pixelVerdeCollision9,
+            null,
+            this
+        );
+
+        this.physics.arcade.overlap(
+            this.campoVerde10,
+            this.invaderBulletDos.bullets,
+            this.pixelVerdeCollision10,
+            null,
+            this
+        );
+        this.physics.arcade.overlap(
+            this.campoVerde11,
+            this.invaderBulletDos.bullets,
+            this.pixelVerdeCollision11,
+            null,
+            this
+        );
+        this.physics.arcade.overlap(
+            this.campoVerde12,
+            this.invaderBulletDos.bullets,
+            this.pixelVerdeCollision12,
+            null,
+            this
+        );
+
+        // Player Hits CampoDeFuerza, Invader and UFO
+
+        this.physics.arcade.overlap(
+            this.campoDeFuerzaGroup,
+            this.bulletRed.bullets,
+            this.campoDeFuerzaBulletCollision,
+            null,
+            this
+        );
+
+        this.physics.arcade.overlap(
+            this.invadersGroup,
+            this.bulletRed.bullets,
+            this.playerHitsInvaders,
+            null,
+            this
+        );
+        this.physics.arcade.overlap(
+            this.ufo,
+            this.bulletRed.bullets,
+            this.playerHitsUfo,
+            null,
+            this
+        );
+
+        // Invader and UFO hits Player
+        this.physics.arcade.overlap(
+            this.spaceship,
+            this.invaderBullet.bullets,
+            this.enemyHitsPlayer,
+            null,
+            this
+        );
+
+        this.physics.arcade.overlap(
+            this.spaceship,
+            this.invaderBulletB.bullets,
+            this.enemyHitsPlayer,
+            null,
+            this
+        );
+
+        this.physics.arcade.overlap(
+            this.spaceship,
+            this.invaderBulletC.bullets,
+            this.enemyHitsPlayer,
+            null,
+            this
+        );
+
+        this.physics.arcade.overlap(
+            this.spaceship,
+            this.invaderBulletDos.bullets,
+            this.enemyHitsPlayer,
+            null,
+            this
+        );
 
         // Botón de disparo barra espaciadora
         var shootButton = this.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
@@ -2271,39 +3665,5 @@ Invaders.items = {
         //allHaloAnimationsTwo.anchor.x = 0.5;
         allHaloAnimationsTwo.anchor.y = 0.5;
         allHaloAnimationsTwo.animations.add('haloTwo');
-    },
-
-    shieldCollision: function (shield,bullet) {
-        // Nuestro shield tiene un health de 10.
-        // Cada vez que recibe una bala y destruye un pixel amarillo su health disminuye por -1;
-        this.shieldHealth--;
-        var rN=Math.floor(Math.random()*(9-5+1)+5);
-        // Si la bala ha matado '9' pixeles es lo mismo que if (shieldHealth == 1) => Destruimos la bala
-        //Con esto podemos determinar el número de pixeles que queremos que se destruyan por tipo de bala o enemigo.
-        // También podemos poner un número random para que cada bala dañe aleatoriamente al shield
-        if (this.shieldHealth == rN){
-            bullet.kill();
-            //shieldHealth = 10;
-        }
-
-        shield.kill();
-
-        //Daño ocasionado por el redBullet
-        //shield.damage(10);
-        this.shieldHealth = 10;
-
-        var haloAnimPrivate = this.haloTwo.getFirstExists(false);
-        haloAnimPrivate.reset(bullet.body.x - 20, bullet.body.y + 10);
-        haloAnimPrivate.play('haloTwo',30,false,true);
-
-
-
-        //bullet.kill();
-
-        //shield.damage(1);
-
-
     }
-
-
 };

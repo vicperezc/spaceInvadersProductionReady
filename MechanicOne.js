@@ -36,12 +36,6 @@ Invaders.MechanicOne = function () {
     this.pianoFast = null;
     this.triggerNote = null;
 
-    //bmd
-    this.bmdGroup = null;
-    this.bmd = null;
-    this.pixelBmd = null;
-
-
     //MODAL
     this.modal = null;
 
@@ -107,8 +101,6 @@ Invaders.MechanicOne = function () {
 
     this.campoBlancoNoPhysics12 = null;
     this.campoVerde12 = null;
-
-
 };
 Invaders.MechanicOne.prototype = {
 
@@ -416,9 +408,6 @@ Invaders.MechanicOne.prototype = {
 
         //                              160 Rubi
         this.scoreText = this.add.text(50, 7,  this.scoreString + this.scoreNumber, style);
-
-
-
     },
 
     createInvaders: function () {
@@ -516,8 +505,6 @@ Invaders.MechanicOne.prototype = {
             // Los invaders se van a mover y acelerar cada vez que se reinicie la function
             this.tweenInvaders();
         }
-
-
     },
 
     tweenInvaders: function () {
@@ -1015,244 +1002,6 @@ Invaders.MechanicOne.prototype = {
 
     },
 
-    bitMapDataShield: function () {
-
-        this.pixelBmd = this.make.sprite(0, 0, 'pixelAmarillo');
-        this.pixelBmd.anchor.set(0.5);
-        this.physics.enable(this.pixelBmd, Phaser.Physics.ARCADE);
-
-        this.bmd = this.add.bitmapData(this.game.width, this.game.height);
-        this.bmd.addToWorld();
-        this.bmd.smoothed = false;
-        //this.physics.enable(this.bmd, Phaser.Physics.ARCADE);
-        //this.physics.enable(this.spaceship, Phaser.Physics.ARCADE);
-        //bmd.draw(loop, 100, 500);
-
-
-        var playerbmd = this.add.bitmapData(32, 32);
-        playerbmd.ctx.rect(0, 0, 50, 50);
-        playerbmd.ctx.fillStyle = "#0f0";
-        playerbmd.ctx.fill();
-
-        //this.pixelVerde = this.add.sprite(this.world.centerX, this.world.centerY, playerbmd);
-        //this.physics.arcade.enable(this.pixelVerde);
-        //this.pixelVerde.anchor.set(0.5);
-        //this.pixelVerde.body.collideWorldBounds = true;
-
-        var platformbmd = this.add.bitmapData(5, 5);
-        platformbmd.ctx.rect(0, 0, 5, 5);
-        platformbmd.ctx.fillStyle = "#fff";
-        platformbmd.ctx.fill();
-
-        // Important - the platforms need to move via velocity, not via direct moving (tweens etc) otherwise they will not allow the player to 'ride' them
-        /*
-        this.platform1 = this.add.sprite(this.world.centerX - 200, this.world.centerY + 64, platformbmd, 0, this.bmdGroup);
-        this.platform1.anchor.set(0.5);
-        this.platform1.body.immovable = true;
-
-        this.platform1 = this.add.sprite(this.world.centerX - 300, this.world.centerY + 64, platformbmd, 0, this.bmdGroup);
-        this.platform1.anchor.set(0.5);
-        this.platform1.body.immovable = true;*/
-
-        //////////////////////
-        //   Primero        //
-        //////////////////////
-        var masIgualCinco = 0;
-        var updateY = 530; //+30
-        //var updateX = 160;
-
-        for (var i = 0; i < 8; i++){
-
-            for (var j = 0; j < 17; j++) {
-
-                if (j<3){
-                    var updateX = 160;
-                    var pixelA = this.bmdGroup.create(updateX + masIgualCinco, updateY, platformbmd);
-                    pixelA.health = 2;
-                    // UNO para un pixel, 5 para cinco pixeles, etc.
-                    masIgualCinco+=6;
-                    //updateX+=5;
-                }else if (j>13){
-                    updateX = 208;
-                    pixelA = this.bmdGroup.create(updateX + masIgualCinco, updateY, platformbmd);
-                    pixelA.health = 2;
-                    // UNO para un pixer, 5 para cinco pixeles, etc.
-                    masIgualCinco+=6;
-                    //updateX+=5;
-                }
-            }
-            masIgualCinco=0;
-            updateY-=6;
-        }
-        //////////////////////
-        //   HORIZONTAL     //
-        //////////////////////
-        masIgualCinco = 0;
-        updateY = 482;
-        updateX = 160;
-        for (i = 0; i < 4; i++){
-            for (j = 0; j < 14; j++) {
-                pixelA = this.bmdGroup.create(updateX + masIgualCinco, updateY, platformbmd);
-                pixelA.health = 2;
-                //updateX = 100;
-                // UNO para un pixer, 5 para cinco pixeles, etc.
-                masIgualCinco+=6;
-            }
-            masIgualCinco=0;
-            updateY-=6;
-        }
-        //////////////////////
-        //   Segundo        //
-        //////////////////////
-        masIgualCinco = 0;
-        updateY = 530;
-        //var updateX = 160;
-        for (i = 0; i < 8; i++){
-
-            for (j = 0; j < 17; j++) {
-
-                if (j<3){
-                    updateX = 360;
-                    pixelA = this.bmdGroup.create(updateX + masIgualCinco, updateY, platformbmd);
-                    pixelA.health = 2;
-                    // UNO para un pixer, 5 para cinco pixeles, etc.
-                    masIgualCinco+=6;
-                    //updateX+=5;
-                }else if (j>13){
-                    updateX = 408;
-                    pixelA = this.bmdGroup.create(updateX + masIgualCinco, updateY, platformbmd);
-                    pixelA.health = 2;
-                    // UNO para un pixer, 5 para cinco pixeles, etc.
-                    masIgualCinco+=6;
-                    //updateX+=5;
-                }
-            }
-            masIgualCinco=0;
-            updateY-=6;
-        }
-        //////////////////////
-        //   HORIZONTAL     //
-        //////////////////////
-        masIgualCinco = 0;
-        updateY = 482;
-        updateX = 360;
-        for (i = 0; i < 4; i++){
-
-            for (j = 0; j < 14; j++) {
-
-                pixelA = this.bmdGroup.create(updateX + masIgualCinco, updateY, platformbmd);
-                pixelA.health = 2;
-                // UNO para un pixer, 5 para cinco pixeles, etc.
-                masIgualCinco+=6;
-            }
-            masIgualCinco=0;
-            updateY-=6;
-        }
-        //////////////////////
-        //   Tercero        //
-        //////////////////////
-        masIgualCinco = 0;
-        updateY = 530;
-        //var updateX = 160;
-        for (i = 0; i < 8; i++){
-
-            for (j = 0; j < 17; j++) {
-
-                if (j<3){
-                    updateX = 560;
-                    pixelA = this.bmdGroup.create(updateX + masIgualCinco, updateY, platformbmd);
-                    pixelA.health = 2;
-                    // UNO para un pixer, 5 para cinco pixeles, etc.
-                    masIgualCinco+=6;
-                    //updateX+=5;
-                }else if (j>13){
-                    updateX = 608;
-                    pixelA = this.bmdGroup.create(updateX + masIgualCinco, updateY, platformbmd);
-                    pixelA.health = 2;
-                    // UNO para un pixer, 5 para cinco pixeles, etc.
-                    masIgualCinco+=6;
-                    //updateX+=5;
-                }
-            }
-            masIgualCinco=0;
-            updateY-=6;
-        }
-        //////////////////////
-        //   HORIZONTAL     //
-        //////////////////////
-        masIgualCinco = 0;
-        updateY = 482;
-        updateX = 560;
-        for (i = 0; i < 4; i++){
-
-            for (j = 0; j < 14; j++) {
-
-                pixelA = this.bmdGroup.create(updateX + masIgualCinco, updateY, platformbmd);
-                //updateX = 100;
-                pixelA.health = 2;
-                // UNO para un pixer, 5 para cinco pixeles, etc.
-                masIgualCinco+=6;
-            }
-            masIgualCinco=0;
-            updateY-=6;
-        }
-
-
-        //////////////////////
-        //   Cuarto         //
-        //////////////////////
-
-        masIgualCinco = 0;
-        updateY = 530;
-        //var updateX = 160;
-        for (i = 0; i < 8; i++){
-
-            for (j = 0; j < 17; j++) {
-
-                if (j<3){
-                    updateX = 760;
-                    pixelA = this.bmdGroup.create(updateX + masIgualCinco, updateY, platformbmd);
-                    pixelA.health = 2;
-
-                    // UNO para un pixer, 5 para cinco pixeles, etc.
-                    masIgualCinco+=6;
-                    //updateX+=5;
-                }else if (j>13){
-                    updateX = 808;
-                    pixelA = this.bmdGroup.create(updateX + masIgualCinco, updateY, platformbmd);
-                    pixelA.health = 2;
-
-                    // UNO para un pixer, 5 para cinco pixeles, etc.
-                    masIgualCinco+=6;
-                    //updateX+=5;
-                }
-            }
-            masIgualCinco=0;
-            updateY-=6;
-        }
-        //////////////////////
-        //   HORIZONTAL     //
-        //////////////////////
-        masIgualCinco = 0;
-        updateY = 482;
-        updateX = 760;
-        for (i = 0; i < 4; i++){
-
-            for (j = 0; j < 14; j++) {
-
-                pixelA = this.bmdGroup.create(updateX + masIgualCinco, updateY, platformbmd);
-                pixelA.health = 2;
-                //updateX = 100;
-                // UNO para un pixer, 5 para cinco pixeles, etc.
-                masIgualCinco+=6;
-            }
-            masIgualCinco=0;
-            updateY-=6;
-        }
-
-
-    },
-
     ufoNormal: function () {
         this.ufo = this.make.sprite(-100, 50, "ufoRubi");
         this.ufo.anchor.setTo(0.5,0.5);
@@ -1479,43 +1228,6 @@ Invaders.MechanicOne.prototype = {
         haloAnimPrivate.reset(bulletTwo.body.x - 20, bulletTwo.body.y + 10);
         haloAnimPrivate.play('haloTwo',30,false,true);
 
-    },
-
-    // De aquí aparecen los +10
-    addPoints: function() {
-        //this._score += 10;
-        //this.textScore.setText('Score: '+this._score);
-
-        var randX = this.rnd.integerInRange(200,this.world.width-200);
-        var randY = this.rnd.integerInRange(200,this.world.height-200);
-        var pointsAdded = this.add.text(null, null, '+50',
-            {
-                font: "28px Arial",
-                fill: "#000",
-                stroke: "#FFF",
-                strokeThickness: 7
-            });
-        pointsAdded.anchor.set(0.5, 0.5);
-        this.add.tween(pointsAdded).to({
-            alpha: 0/*,
-             y: randY-50 */}, 1000, Phaser.Easing.Linear.None, true);
-
-        //this.camera.shake(0.01, 100, true, Phaser.Camera.SHAKE_BOTH, true);
-    },
-
-    spawnEmitter: function(item, particle, number, lifespan, frequency, offsetX, offsetY, gravity) {
-        offsetX = offsetX || 0;
-        offsetY = offsetY || 0;
-        lifespan = lifespan || 2000;
-        frequency = frequency || 0;
-        var emitter = this.game.add.emitter(item.x+100, item.y + 15, number);
-        emitter.maxParticles = number;
-        emitter.makeParticles(particle);
-        emitter.setXSpeed(-500, 500);
-        emitter.setYSpeed(-700, 300);
-        emitter.setScale(2, 1, 2, 1, 500, Phaser.Easing.Linear.None);
-        emitter.gravity = gravity || 250;
-        emitter.start(false, lifespan, frequency, number);
     },
 
     playerDies: function () {
@@ -3021,13 +2733,6 @@ Invaders.MechanicOne.prototype = {
             this
         );
 
-
-        //HandyButton
-
-        var handyButton = this.input.keyboard.addKey(Phaser.Keyboard.W);
-
-        handyButton.onDown.add(this.gameOverLogic,this);
-
         // Botón de disparo barra espaciadora
         var shootButton = this.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
         this.bulletRed.trackSprite(this.spaceship,0,0,false);
@@ -3039,13 +2744,32 @@ Invaders.MechanicOne.prototype = {
             this.enemyFires();
         }
 
-        if (shootButton.isDown && this.spaceship.alive && this.counter < 264 && this.invadersGroup.countLiving() !== 0
-        || (this.game.input.activePointer.isDown &&
-            this.game.input.activePointer.x > this.game.width/2 + this.game.width/4)
-        || (this.game.input.activePointer.isDown &&
-            this.game.input.activePointer.x < this.game.width/4)){
-            this.bulletRed.fire();
+        if (Invaders.isMobile === false) {
+            if (
+                shootButton.isDown &&
+                this.spaceship.alive &&
+                this.counter < 264 &&
+                this.invadersGroup.countLiving() !== 0
+            ) {
+                this.bulletRed.fire();
+            }
+        } else {
+            if (
+                shootButton.isDown &&
+                this.spaceship.alive &&
+                this.counter < 264 &&
+                this.invadersGroup.countLiving() !== 0 ||
+                this.game.input.activePointer.isDown &&
+                this.game.input.activePointer.x >
+                this.game.width / 2 + this.game.width / 4 ||
+                this.game.input.activePointer.isDown &&
+                this.game.input.activePointer.x < this.game.width / 4
+            ) {
+                this.bulletRed.fire();
+            }
         }
+
+
 
         //var singleShot = shootButton.onDown.add(shootBullet, this);
 
@@ -3062,22 +2786,41 @@ Invaders.MechanicOne.prototype = {
         //////////////////////////////////////////
         //if (cursor.left.isDown && cursor.right.isUp)
 
-        if (this.cursor.right.isDown && this.cursor.left.isUp || (this.game.input.activePointer.isDown &&
-            this.game.input.activePointer.x > this.game.width/2 + this.game.width/4)){
-
-            //spaceship.body.acceleration.x = 1200;
-            this.spaceship.body.velocity.x = 270;
-
-        } else if( this.cursor.left.isDown && this.cursor.right.isUp || (this.game.input.activePointer.isDown &&
-            this.game.input.activePointer.x < this.game.width/4)){
-
-            //spaceship.body.acceleration.x = -1200;
-            this.spaceship.body.velocity.x = -270;
+        if (Invaders.isMobile === false) {
+            if (this.cursor.right.isDown && this.cursor.left.isUp) {
+                //spaceship.body.acceleration.x = 1200;
+                this.spaceship.body.velocity.x = 270;
+            } else if (this.cursor.left.isDown && this.cursor.right.isUp) {
+                //spaceship.body.acceleration.x = -1200;
+                this.spaceship.body.velocity.x = -270;
+            } else {
+                //spaceship.body.acceleration.x = 0;
+                this.spaceship.body.velocity.x = 0;
+            }
         } else {
-            //spaceship.body.acceleration.x = 0;
-            this.spaceship.body.velocity.x = 0;
-
+            if (
+                this.cursor.right.isDown && this.cursor.left.isUp ||
+                this.game.input.activePointer.isDown &&
+                this.game.input.activePointer.x >
+                this.game.width / 2 + this.game.width / 4
+            ) {
+                //spaceship.body.acceleration.x = 1200;
+                this.spaceship.body.velocity.x = 270;
+            } else if (
+                this.cursor.left.isDown && this.cursor.right.isUp ||
+                this.game.input.activePointer.isDown &&
+                this.game.input.activePointer.x < this.game.width / 4
+            ) {
+                //spaceship.body.acceleration.x = -1200;
+                this.spaceship.body.velocity.x = -270;
+            } else {
+                //spaceship.body.acceleration.x = 0;
+                this.spaceship.body.velocity.x = 0;
+            }
         }
+
+
+
 
     },
 
